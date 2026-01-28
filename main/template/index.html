@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,10 +8,11 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js" crossorigin="anonymous"></script>
     <script>
         tailwind.config = {
-            darkMode: 'class',
+            darkMode: 'class', // Critical for manual toggling
             theme: {
                 extend: {
                     colors: {
@@ -31,6 +32,18 @@
         }
     </script>
     <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+body, html {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
         @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;600&display=swap');
         body { font-family: 'Inter', sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
         .serif { font-family: 'DM+Serif+Display', serif; }
@@ -39,6 +52,8 @@
         
         #main-nav { transition: all 0.4s ease-in-out; }
         .nav-transparent { background-color: transparent !important; backdrop-filter: blur(0px) !important; border-color: transparent !important; }
+        
+        /* Scrolled Glassmorphism */
         .nav-scrolled { background-color: rgba(251, 246, 247, 0.75) !important; backdrop-filter: blur(12px) !important; border-bottom: 1px solid rgba(105, 96, 102, 0.1) !important; }
         .dark .nav-scrolled { background-color: rgba(30, 27, 29, 0.75) !important; border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important; }
 
@@ -50,58 +65,264 @@
         #main-nav a:hover::after { width: 100%; }
 
         .swiper-button-next, .swiper-button-prev { color: #DCB4BC !important; background: rgba(255,255,255,0.3); width: 35px !important; height: 35px !important; border-radius: 50%; backdrop-filter: blur(4px); }
-        .swiper-button-next:after, .swiper-button-prev:after { font-size: 14px !important; font-weight: bold; }
         .no-scrollbar::-webkit-scrollbar { display: none; }
 
-        /* Card Hover Effects */
-        .hover-card { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .hover-card { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative; overflow: hidden;}
         .hover-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(220, 180, 188, 0.15); }
+        .hover-card::before { content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%; background: linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent); transform: skewX(-25deg); transition: 0.5s; }
+        .hover-card:hover::before { left: 150%; }
+
+        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-10px); } 100% { transform: translateY(0px); } }
+        .floating-icon { animation: float 3s ease-in-out infinite; }
+
+        /* Animated Gradient Background for Header */
+header {
+    background: radial-gradient(circle at 50% 50%, rgba(220, 180, 188, 0.05) 0%, transparent 50%);
+}
+
+/* Mobile Menu Link Styling */
+.mobile-link {
+    transition: all 0.3s ease;
+    opacity: 0.8;
+}
+.mobile-link:hover {
+    color: #DCB4BC;
+    transform: scale(1.1);
+    opacity: 1;
+}
+
+/* Active Class for Mobile Menu */
+.menu-open {
+    transform: translateX(0) !important;
+}
+
+/* Blur effect when menu is open */
+.menu-blur {
+    filter: blur(5px);
+    pointer-events: none;
+}
+
+/* Floating Glass Orbs */
+.orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    z-index: -1;
+    animation: orbit 20s linear infinite;
+}
+
+@keyframes orbit {
+    from { transform: rotate(0deg) translateX(50px) rotate(0deg); }
+    to { transform: rotate(360deg) translateX(50px) rotate(-360deg); }
+}
+
+/* Magnetic Button Feel */
+.magnetic-btn {
+    display: inline-block;
+    transition: transform 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Staggered Text Animation */
+.reveal-text {
+    overflow: hidden;
+    display: block;
+}
+.reveal-text span {
+    display: block;
+    transform: translateY(100%);
+    animation: reveal 0.8s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+}
+
+@keyframes reveal {
+    0% { transform: translateY(100%); }
+    100% { transform: translateY(0); }
+}
+
+/* Unique floating for tech stack icons */
+@keyframes techFloat {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    33% { transform: translateY(-15px) rotate(2deg); }
+    66% { transform: translateY(5px) rotate(-2deg); }
+}
+
+/* Unique floating for each tech tag */
+@keyframes tech-float-1 {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    50% { transform: translate(-10px, -15px) rotate(-5deg); }
+}
+@keyframes tech-float-2 {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    50% { transform: translate(12px, -10px) rotate(8deg); }
+}
+@keyframes tech-float-3 {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    50% { transform: translate(-8px, 12px) rotate(-10deg); }
+}
+
+.animate-tech-float-1 { animation: tech-float-1 4s ease-in-out infinite; }
+.animate-tech-float-2 { animation: tech-float-2 5s ease-in-out infinite; }
+.animate-tech-float-3 { animation: tech-float-3 4.5s ease-in-out infinite; }
+
+.project-main-img {
+    transition: opacity 0.3s ease-in-out;
+    opacity: 1;
+}
     </style>
 </head>
-<div id="loader" class="fixed inset-0 z-[200] bg-blossom-base dark:bg-blossom-darkBase flex flex-col items-center justify-center transition-opacity duration-700">
+
+<div id="loader" class="fixed inset-0 z-[200] bg-blossom-darkBase flex flex-col items-center justify-center transition-opacity duration-700">
     <div class="relative w-20 h-20">
         <div class="absolute inset-0 border-4 border-blossom-primary/20 rounded-full"></div>
         <div class="absolute inset-0 border-4 border-t-blossom-primary rounded-full animate-spin"></div>
     </div>
-    <div class="mt-6 serif text-1xl animate-pulse tracking-widest text-blossom-text dark:text-blossom-darkText">
-        LOADING...
-    </div>
+    <div class="mt-6 serif text-1xl animate-pulse tracking-widest text-blossom-darkText">LOADING...</div>
 </div>
+
 <body class="bg-blossom-base text-blossom-text dark:bg-blossom-darkBase dark:text-blossom-darkText transition-colors duration-500">
+<nav id="main-nav" class="fixed top-0 z-50 w-full nav-transparent transition-all duration-300">
+    <div class="max-w-6xl mx-auto px-4 md:px-6 h-auto md:h-20 py-4 md:py-0 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div class="text-xl font-bold tracking-tighter serif">FULL STACK DEV.</div>
 
-    <nav id="main-nav" class="fixed top-0 z-50 w-full nav-transparent">
-        <div class="max-w-6xl mx-auto px-4 md:px-6 h-16 md:h-20 flex justify-between items-center">
-            <div class="text-xl font-bold tracking-tighter serif">SHREYA.</div>
-            <div class="flex items-center space-x-3 md:space-x-8 text-[10px] md:text-sm font-medium overflow-x-auto no-scrollbar">
-                <a href="#about" class="hover:text-blossom-primary transition-colors whitespace-nowrap">About</a>
-                <a href="#skills" class="hover:text-blossom-primary transition-colors whitespace-nowrap">Skills</a>
-                <a href="#experience" class="hover:text-blossom-primary transition-colors whitespace-nowrap">Experience</a>
-                <a href="#projects" class="hover:text-blossom-primary transition-colors whitespace-nowrap">Work</a>
-                <a href="#education" class="hover:text-blossom-primary transition-colors whitespace-nowrap">Education</a>
-                <button onclick="document.documentElement.classList.toggle('dark')" class="p-1.5 md:p-2 rounded-full bg-blossom-text/5 dark:bg-white/5 shrink-0">
-                    <span class="dark:hidden">🌙</span><span class="hidden dark:inline">☀️</span>
-                </button>
-            </div>
+        <div class="flex flex-wrap justify-center items-center gap-x-4 gap-y-3 md:gap-x-8 text-[10px] md:text-sm font-medium">
+            <a href="#about2" class="nav-link-hover whitespace-nowrap">About</a>
+            <a href="#skills" class="nav-link-hover whitespace-nowrap">Skills</a>
+            <a href="#experience" class="nav-link-hover whitespace-nowrap">Experience</a>
+            <a href="#projects" class="nav-link-hover whitespace-nowrap">Work</a>
+            <a href="#education" class="nav-link-hover whitespace-nowrap">Education</a>
+            <a href="#certifications" class="nav-link-hover whitespace-nowrap">Certifications</a>
+            <a href="#contact" class="hover:text-blossom-primary transition-colors whitespace-nowrap font-bold">Contact</a>
+            
+            <button onclick="document.documentElement.classList.toggle('dark')" class="p-1.5 md:p-2 rounded-full bg-blossom-text/5 dark:bg-white/5 shrink-0 transition-transform hover:scale-110">
+                <span class="hidden dark:inline text-xs">☀️</span><span class="dark:hidden text-xs">🌙</span>
+            </button>
         </div>
-    </nav>
+    </div>
+</nav>
+<header id="about" class="relative max-w-6xl mx-auto px-6 pt-24 md:pt-32 pb-16 md:pb-32 grid grid-cols-1 md:grid-cols-2 gap-12 items-center overflow-hidden">
+    <div class="orb w-64 h-64 bg-blossom-primary/20 top-0 left-0 opacity-50"></div>
+    <div class="orb w-48 h-48 bg-purple-400/10 bottom-10 right-10 opacity-50" style="animation-delay: -5s;"></div>
 
-    <header id="about" class="max-w-6xl mx-auto px-6 pt-32 md:pt-48 pb-16 md:pb-32 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-        <div data-aos="fade-right" class="text-center md:text-left order-2 md:order-1">
-            <span class="text-blossom-primary dark:text-blossom-darkPrimary font-semibold tracking-widest uppercase text-[10px] md:text-xs">Full Stack Web Developer</span>
-            <h1 class="serif text-5xl md:text-7xl mt-4 mb-6 leading-tight">Shreya Maurya</h1>
-            <p class="text-base md:text-lg opacity-80 mb-8 leading-relaxed max-w-lg mx-auto md:mx-0">Data-driven MCA student (Expected 2026) specializing in Full-Stack Web Development. Proficient in MERN stack, Django, and building scalable solutions.</p>
-            <div class="flex flex-wrap gap-4 justify-center md:justify-start">
-                <a href="mailto:shreyamaurya0660@gmail.com" class="bg-blossom-primary dark:bg-blossom-darkPrimary dark:text-blossom-darkBase px-6 md:px-8 py-3 rounded-xl font-bold hover:scale-105 shadow-lg transition text-sm md:text-base">Hire Me</a>
-                <a href="https://github.com/shreyamaurya0660" target="_blank" class="border border-blossom-text/20 px-6 md:px-8 py-3 rounded-xl font-bold hover:bg-blossom-text/5 transition text-sm md:text-base">GitHub</a>
+    <div data-aos="fade-right" class="text-center md:text-left order-2 md:order-1 relative z-20">
+        <span class="text-blossom-primary dark:text-blossom-darkPrimary font-semibold tracking-[0.3em] uppercase text-[10px] md:text-xs mb-4 block reveal-text">
+            <span>Innovation • Scalability • Performance</span>
+        </span>
+        <h1 class="serif text-5xl md:text-8xl mt-4 mb-6 leading-tight text-blossom-text dark:text-white reveal-text">
+            <span>Shreya Maurya</span>
+        </h1>
+        <div class="h-16 mb-8">
+            <p id="typewriter-text" class="text-base md:text-lg opacity-80 leading-relaxed max-w-lg mx-auto md:mx-0"></p>
+        </div>
+        <div class="flex flex-wrap gap-6 justify-center md:justify-start items-center">
+            <div class="magnetic-area">
+                <a href="mailto:shreyamaurya0660@gmail.com" class="magnetic-btn bg-blossom-primary dark:bg-blossom-darkPrimary dark:text-blossom-darkBase px-10 py-4 rounded-full font-bold shadow-2xl hover:shadow-blossom-primary/40 transition-all text-sm md:text-base text-white">
+                    Hire Me
+                </a>
+            </div>
+            <a href="https://github.com/ShreyaaMaurya" target="_blank" class="border border-blossom-text/20 dark:border-white/10 px-6 md:px-8 py-3 rounded-xl font-bold hover:bg-blossom-text/5 transition text-sm md:text-base">GitHub</a>
+        </div>
+    </div>
+
+    <div class="flex justify-center order-1 md:order-2 relative z-10" data-aos="zoom-in">
+        <div class="relative group" data-tilt data-tilt-max="15">
+            <div class="absolute -inset-1 bg-gradient-to-r from-blossom-primary to-blossom-darkPrimary rounded-full blur opacity-25"></div>
+            <img src="https://media.craiyon.com/2025-07-12/_4dZ32QVTBSVcgD5FEQ6yg.webp" alt="Shreya Avatar" class="relative w-56 h-56 md:w-80 md:h-80 rounded-full object-cover border-4 border-white dark:border-blossom-darkCard shadow-2xl">
+            
+            <div class="absolute -top-4 -left-4 bg-white dark:bg-blossom-darkCard p-3 rounded-xl shadow-xl border border-blossom-primary/20 animate-tech-float-1">
+                <i class="fa-brands fa-python text-yellow-500 text-xl md:text-2xl"></i>
+            </div>
+            
+            <div class="absolute top-0 -right-4 bg-white dark:bg-blossom-darkCard p-3 rounded-xl shadow-xl border border-blossom-primary/20 animate-tech-float-2">
+                <i class="fa-brands fa-react text-cyan-400 text-xl md:text-2xl"></i>
+            </div>
+
+            <div class="absolute bottom-10 -left-6 bg-white dark:bg-blossom-darkCard p-3 rounded-xl shadow-xl border border-blossom-primary/20 animate-tech-float-3">
+                <i class="fa-solid fa-database text-green-500 text-xl md:text-2xl"></i>
+            </div>
+
+            <div class="absolute -bottom-2 -right-2 bg-white dark:bg-blossom-darkCard p-3 rounded-xl shadow-xl border border-blossom-primary/20 animate-bounce">
+                <i class="fa-solid fa-code text-blossom-primary text-xl md:text-2xl"></i>
             </div>
         </div>
-        <div class="flex justify-center order-1 md:order-2" data-aos="zoom-in">
-            <div class="relative group">
-                <div class="absolute -inset-1 bg-gradient-to-r from-blossom-primary to-blossom-darkPrimary rounded-full blur opacity-25"></div>
-                <img src="https://media.craiyon.com/2025-07-12/_4dZ32QVTBSVcgD5FEQ6yg.webp" alt="Shreya Avatar" class="relative w-56 h-56 md:w-80 md:h-80 rounded-full object-cover border-4 border-white dark:border-blossom-darkCard shadow-2xl">
+    </div>
+</header>
+<section id="about2" class="max-w-6xl mx-auto px-6 py-20 md:py-32 overflow-hidden">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        
+        <div class="relative order-2 lg:order-1" data-aos="fade-right">
+            <div class="glass-card p-1 rounded-[2.5rem] bg-gradient-to-br from-blossom-primary/20 to-transparent">
+                <div class="bg-blossom-darkCard rounded-[2.3rem] p-8 min-h-[400px] relative overflow-hidden">
+                    <div class="absolute inset-0 opacity-10 font-mono text-[10px] pointer-events-none select-none p-4">
+                        const developer = { name: "Shreya", role: "Full Stack", skills: ["MERN", "Django", "SQL"] };
+                        function buildScalableApps() { return "99% Uptime"; }
+                    </div>
+
+                    <div class="relative z-10 flex flex-wrap justify-center gap-8 py-10">
+                        <div class="floating-icon w-20 h-20 bg-white/5 rounded-2xl flex flex-col items-center justify-center border border-white/10 shadow-xl" style="animation-delay: 0s;">
+                            <i class="fa-brands fa-node-js text-3xl text-green-400"></i>
+                            <span class="text-[8px] mt-2 font-bold opacity-50">Node.js</span>
+                        </div>
+                        <div class="floating-icon w-20 h-20 bg-white/5 rounded-2xl flex flex-col items-center justify-center border border-white/10 shadow-xl" style="animation-delay: -1.5s;">
+                            <i class="fa-brands fa-react text-3xl text-cyan-400"></i>
+                            <span class="text-[8px] mt-2 font-bold opacity-50">React</span>
+                        </div>
+                        <div class="floating-icon w-20 h-20 bg-white/5 rounded-2xl flex flex-col items-center justify-center border border-white/10 shadow-xl" style="animation-delay: -0.8s;">
+                            <i class="fa-brands fa-python text-3xl text-yellow-400"></i>
+                            <span class="text-[8px] mt-2 font-bold opacity-50">Python</span>
+                        </div>
+                        <div class="floating-icon w-20 h-20 bg-white/5 rounded-2xl flex flex-col items-center justify-center border border-white/10 shadow-xl" style="animation-delay: -2.2s;">
+                            <i class="fa-solid fa-database text-3xl text-blossom-primary"></i>
+                            <span class="text-[8px] mt-2 font-bold opacity-50">MongoDB</span>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 p-5 rounded-2xl bg-black/40 border border-white/5 font-mono text-xs">
+                        <div class="flex gap-2 mb-3">
+                            <div class="w-2.5 h-2.5 rounded-full bg-red-500/50"></div>
+                            <div class="w-2.5 h-2.5 rounded-full bg-yellow-500/50"></div>
+                            <div class="w-2.5 h-2.5 rounded-full bg-green-500/50"></div>
+                        </div>
+                        <div class="text-blossom-darkText/70">
+                            <span class="text-purple-400">></span> status.current()<br>
+                            <span class="text-green-400">"Interning at Niftel Communications"</span><br>
+                            <span class="text-purple-400">></span> focus.next()<br>
+                            <span class="text-yellow-400">"Scalable Web Architectures"</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </header>
+
+        <div data-aos="fade-left" class="order-1 lg:order-2">
+            <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-blossom-primary/10 border border-blossom-primary/20 text-blossom-primary text-xs font-bold mb-8">
+                <i class="fa-solid fa-terminal"></i> About The Developer
+            </div>
+            
+            <h2 class="serif text-4xl md:text-5xl mb-8 leading-tight text-blossom-text dark:text-white">
+                Turning Complex Logic into <span class="text-blossom-primary italic text-glow">Fluid Experiences</span>
+            </h2>
+
+            <div class="space-y-6 text-base md:text-lg leading-relaxed opacity-80">
+                <p>
+                    I am a results-driven **MCA student (2026)** at SRMCEM. My professional path is driven by a simple goal: building high-performance systems that don't just work, but excel under pressure.
+                </p>
+                <p>
+                    Currently, as a **Full Stack Intern at Niftel Communications**, I've helped maintain 99% system uptime through careful debugging and API optimization. My toolkit includes **MERN, Django, and SQL**, which I used to boost backend processing speed by 20%.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-2 gap-6 mt-12">
+                <div class="p-6 rounded-3xl bg-white dark:bg-white/5 border border-blossom-primary/10 hover-card">
+                    <h4 class="font-bold text-blossom-primary text-2xl mb-1">2+</h4>
+                    <p class="text-[10px] uppercase tracking-widest font-bold opacity-60">Full-Stack Internships</p>
+                </div>
+                <div class="p-6 rounded-3xl bg-white dark:bg-white/5 border border-blossom-primary/10 hover-card">
+                    <h4 class="font-bold text-blossom-primary text-2xl mb-1">15+</h4>
+                    <p class="text-[10px] uppercase tracking-widest font-bold opacity-60">Projects Engineered</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
     <section id="skills" class="max-w-6xl mx-auto px-6 py-12 md:py-24">
         <h2 class="serif text-4xl md:text-5xl mb-12 text-center md:text-left" data-aos="fade-up">Technical Expertise</h2>
@@ -139,103 +360,140 @@
             <div class="pl-8 relative" data-aos="fade-left">
                 <div class="absolute w-4 h-4 bg-blossom-primary rounded-full -left-[9px] top-1 shadow-lg shadow-blossom-primary/50"></div>
                 <h4 class="text-xl font-bold">Full Stack Developer Intern</h4>
-                <p class="text-blossom-primary font-semibold text-sm mb-4 italic">Niftel Communications | Oct 2025 - Present [cite: 15, 61]</p>
+                <p class="text-blossom-primary font-semibold text-sm mb-4 italic">Niftel Communications | Oct 2025 - Present</p>
                 <ul class="text-sm opacity-70 space-y-3 list-disc ml-4">
-                    <li>Partnered with the development team to debug and maintain scalable web architectures, resolving critical issues to sustain 99% system uptime[cite: 16, 62].</li>
-                    <li>Accelerated backend data processing by ~20% through the integration of third-party RESTful APIs and the enhancement of internal tooling efficiency[cite: 17, 63].</li>
-                    <li>Streamlined feature deployments by actively engaging in Agile code reviews and the SDLC, ensuring adherence to coding standards[cite: 18, 64].</li>
+                    <li>Partnered with the development team to debug and maintain scalable web architectures, resolving critical issues to sustain 99% system uptime.</li>
+                    <li>Accelerated backend data processing by ~20% through the integration of third-party RESTful APIs and the enhancement of internal tooling efficiency.</li>
+                    <li>Streamlined feature deployments by actively engaging in Agile code reviews and the SDLC, ensuring adherence to coding standards.</li>
                 </ul>
             </div>
             <div class="pl-8 relative" data-aos="fade-left" data-aos-delay="100">
                 <div class="absolute w-4 h-4 border-2 border-blossom-primary bg-blossom-base dark:bg-blossom-darkBase rounded-full -left-[9px] top-1"></div>
                 <h4 class="text-xl font-bold">Trainee Intern</h4>
-                <p class="text-blossom-primary font-semibold text-sm mb-4 italic">SRDT | Python & Django Training [cite: 19, 65]</p>
+                <p class="text-blossom-primary font-semibold text-sm mb-4 italic">SRDT | Python & Django Training.</p>
                 <ul class="text-sm opacity-70 space-y-3 list-disc ml-4">
-                    <li>Completed hands-on intensive training in Python and Django framework[cite: 20, 66].</li>
-                    <li>Learned Django fundamentals including models, views, templates, URL routing, and basic authentication[cite: 22, 68].</li>
-                    <li>Built a mini web application using Django, SQLite, HTML, and CSS[cite: 23, 69].</li>
+                    <li>Completed hands-on intensive training in Python and Django framework.</li>
+                    <li>Learned Django fundamentals including models, views, templates, URL routing, and basic authentication.</li>
+                    <li>Built a mini web application using Django, SQLite, HTML, and CSS.</li>
                 </ul>
             </div>
         </div>
     </section>
-
-   <section id="projects" class="max-w-6xl mx-auto px-6 py-12 md:py-20 text-center md:text-left">
+<section id="projects" class="max-w-6xl mx-auto px-6 py-12 md:py-20">
     <h2 class="serif text-4xl mb-12" data-aos="fade-up">Portfolio Projects</h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
-        
-        <div class="group relative bg-white dark:bg-blossom-darkCard rounded-[2rem] overflow-hidden border border-blossom-primary/10 transition-all hover-card shadow-sm" data-aos="fade-up">
-            <div onclick="openProject('eternal')" class="h-48 overflow-hidden cursor-pointer">
-                <img src="/main/src/img/EternalFlames.index.png" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
-            </div>
-            <div class="p-8 text-left">
-                <div class="flex justify-between items-start mb-2">
-                    <h3 class="text-xl font-bold">EternalFlame</h3>
-                    <a href="https://github.com/shreyamaurya0660" target="_blank" class="text-blossom-text/40 hover:text-blossom-primary transition-colors">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.744.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                    </a>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">   
+        <div class="group relative bg-white dark:bg-blossom-darkCard rounded-[2rem] overflow-hidden border border-blossom-primary/10 transition-all hover-card cursor-pointer project-hover-card" data-project="eternal">
+            <div class="h-56 overflow-hidden relative">
+                <a href="https://github.com/ShreyaaMaurya/EternalFlames" target="_blank" class="absolute top-4 right-4 z-30 bg-black/60 text-white p-2.5 rounded-full backdrop-blur-md opacity-0 group-hover:opacity-100 transition-all hover:bg-blossom-primary">
+                    <i class="fa-brands fa-github text-xl"></i>
+                </a>
+                <img src="./img/EternalFlames.index.png" class="w-full h-full object-cover transition-opacity duration-300 project-main-img">
+                <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
+                    <span class="bg-white/10 backdrop-blur-md text-white px-4 py-2 rounded-full text-xs font-bold border border-white/20">Click for Details</span>
                 </div>
-                <p class="text-xs opacity-60 mb-4">Node.js, MongoDB, Tailwind CSS [cite: 24]</p>
-                <span onclick="openProject('eternal')" class="text-blossom-primary font-bold text-[10px] uppercase tracking-widest cursor-pointer">View Gallery →</span>
+            </div>
+            <div class="p-8">
+                <h3 class="text-xl font-bold mb-2">EternalFlame</h3>
+                <p class="text-[10px] font-bold text-blossom-primary uppercase tracking-[0.2em] mb-4">E-Commerce • Node.js Express.js MongoDB</p>
+                <div class="text-xs opacity-50 uppercase font-bold tracking-widest">View Case Study →</div>
+            </div>
+        </div>
+ <div class="group relative bg-white dark:bg-blossom-darkCard rounded-[2rem] overflow-hidden border border-blossom-primary/10 transition-all hover-card cursor-pointer project-hover-card" data-project="event">
+            <div class="h-56 overflow-hidden relative">
+                <a href="https://github.com/ShreyaaMaurya/event-verse" target="_blank" class="absolute top-4 right-4 z-30 bg-black/60 text-white p-2.5 rounded-full backdrop-blur-md opacity-0 group-hover:opacity-100 transition-all hover:bg-blossom-primary">
+                    <i class="fa-brands fa-github text-xl"></i>
+                </a>
+                <img src="./img/EventVerse.index.png" class="w-full h-full object-cover transition-opacity duration-300 project-main-img">
+                <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
+                    <span class="bg-white/10 backdrop-blur-md text-white px-4 py-2 rounded-full text-xs font-bold border border-white/20">Click for Details</span>
+                </div>
+            </div>
+            <div class="p-8">
+                <h3 class="text-xl font-bold mb-2">EventVerse</h3>
+                <p class="text-[10px] font-bold text-blossom-primary uppercase tracking-[0.2em] mb-4">College Event Management System • Python Django</p>
+                <div class="text-xs opacity-50 uppercase font-bold tracking-widest">View Case Study →</div>
             </div>
         </div>
 
-        <div class="group relative bg-white dark:bg-blossom-darkCard rounded-[2rem] overflow-hidden border border-blossom-primary/10 transition-all hover-card shadow-sm" data-aos="fade-up" data-aos-delay="100">
-            <div onclick="openProject('niftel')" class="h-48 overflow-hidden cursor-pointer">
-                <img src="/main/src/img/EternalFlames.index.png" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
-            </div>
-            <div class="p-8 text-left">
-                <div class="flex justify-between items-start mb-2">
-                    <h3 class="text-xl font-bold">NiftelInfra</h3>
-                    <a href="https://github.com/shreyamaurya0660" target="_blank" class="text-blossom-text/40 hover:text-blossom-primary transition-colors">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.744.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                    </a>
+         <div class="group relative bg-white dark:bg-blossom-darkCard rounded-[2rem] overflow-hidden border border-blossom-primary/10 transition-all hover-card cursor-pointer project-hover-card" data-project="NiftelInfra">
+            <div class="h-56 overflow-hidden relative">
+                <a href="https://github.com/ShreyaaMaurya/niftel-infra" target="_blank" class="absolute top-4 right-4 z-30 bg-black/60 text-white p-2.5 rounded-full backdrop-blur-md opacity-0 group-hover:opacity-100 transition-all hover:bg-blossom-primary">
+                    <i class="fa-brands fa-github text-xl"></i>
+                </a>
+                <img src="./img/niftelInfra.index.png" class="w-full h-full object-cover transition-opacity duration-300 project-main-img">
+                <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
+                    <span class="bg-white/10 backdrop-blur-md text-white px-4 py-2 rounded-full text-xs font-bold border border-white/20">Click for Details</span>
                 </div>
-                <p class="text-xs opacity-60 mb-4">HTML5, Bootstrap, Node.js [cite: 33]</p>
-                <span onclick="openProject('niftel')" class="text-blossom-primary font-bold text-[10px] uppercase tracking-widest cursor-pointer">View Gallery →</span>
+            </div>
+            <div class="p-8">
+                <h3 class="text-xl font-bold mb-2">NiftelInfra</h3>
+                <p class="text-[10px] font-bold text-blossom-primary uppercase tracking-[0.2em] mb-4">Property Management System• MERN</p>
+                <div class="text-xs opacity-50 uppercase font-bold tracking-widest">View Case Study →</div>
             </div>
         </div>
-
-        <div class="group relative bg-white dark:bg-blossom-darkCard rounded-[2rem] overflow-hidden border border-blossom-primary/10 transition-all hover-card shadow-sm" data-aos="fade-up" data-aos-delay="200">
-            <div onclick="openProject('event')" class="h-48 overflow-hidden cursor-pointer">
-                <img src="/main/src/img/EventVerse.index.png" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
-            </div>
-            <div class="p-8 text-left">
-                <div class="flex justify-between items-start mb-2">
-                    <h3 class="text-xl font-bold">EventVerse</h3>
-                    <a href="https://github.com/shreyamaurya0660" target="_blank" class="text-blossom-text/40 hover:text-blossom-primary transition-colors">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.744.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                    </a>
-                </div>
-                <p class="text-xs opacity-60 mb-4">Python, Django, SQL [cite: 29]</p>
-                <span onclick="openProject('event')" class="text-blossom-primary font-bold text-[10px] uppercase tracking-widest cursor-pointer">View Gallery →</span>
-            </div>
-        </div>
-
+    
     </div>
 </section>
-
-    <section id="education" class="max-w-6xl mx-auto px-6 py-12 md:py-24">
-        <h2 class="serif text-4xl md:text-5xl mb-16 text-center md:text-left" data-aos="fade-right">Academic Journey</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 md:gap-10">
-            <div class="group p-10 bg-white dark:bg-blossom-darkCard rounded-[2.5rem] border border-blossom-primary/10 shadow-sm flex flex-col justify-between h-full hover-card" data-aos="fade-up">
-                <div><h3 class="text-2xl font-bold mb-3 text-blossom-primary uppercase text-xs tracking-widest">Masters</h3><h4 class="text-xl font-bold mb-4">MCA</h4><p class="opacity-60 text-sm leading-relaxed">Shri Ramswaroop Memorial College of Engineering and Management | Expected 2026 [cite: 40, 87]</p></div>
-                <div class="pt-4 border-t border-blossom-primary/10 text-[10px] font-bold opacity-50 uppercase mt-6">Active</div>
-            </div>
-            <div class="group p-10 bg-white dark:bg-blossom-darkCard rounded-[2.5rem] border border-blossom-primary/10 shadow-sm flex flex-col justify-between h-full hover-card" data-aos="fade-up" data-aos-delay="100">
-                <div><h3 class="text-2xl font-bold mb-3 text-blossom-primary uppercase text-xs tracking-widest">Bachelors</h3><h4 class="text-xl font-bold mb-4">B.Sc Computer Science</h4><p class="opacity-60 text-sm leading-relaxed">Shri Jai Narain Misra PG College, Lucknow | 2021 - 2024 [cite: 41, 42]</p></div>
-                <div class="pt-4 border-t border-blossom-primary/10 text-[10px] font-bold opacity-50 uppercase mt-6">Graduated</div>
-            </div>
-            <div class="group p-10 bg-white dark:bg-blossom-darkCard rounded-[2.5rem] border border-blossom-primary/10 shadow-sm flex flex-col justify-between h-full hover-card" data-aos="fade-up">
-                <div><h3 class="text-2xl font-bold mb-3 text-blossom-primary uppercase text-xs tracking-widest">Senior Secondary</h3><h4 class="text-xl font-bold mb-4">Intermediate (UP Board)</h4><p class="opacity-60 text-sm leading-relaxed">St. Christ Public Inter College | 2021 [cite: 43, 90]</p></div>
-                <div class="pt-4 border-t border-blossom-primary/10 text-[10px] font-bold opacity-50 uppercase mt-6">Completed</div>
-            </div>
-            <div class="group p-10 bg-white dark:bg-blossom-darkCard rounded-[2.5rem] border border-blossom-primary/10 shadow-sm flex flex-col justify-between h-full hover-card" data-aos="fade-up" data-aos-delay="100">
-                <div><h3 class="text-2xl font-bold mb-3 text-blossom-primary uppercase text-xs tracking-widest">Secondary</h3><h4 class="text-xl font-bold mb-4">Highschool (UP Board)</h4><p class="opacity-60 text-sm leading-relaxed">St. Christ Public Inter College | 2019 [cite: 46, 94]</p></div>
-                <div class="pt-4 border-t border-blossom-primary/10 text-[10px] font-bold opacity-50 uppercase mt-6">Completed</div>
+<section id="education" class="max-w-4xl mx-auto px-6 py-12 md:py-24">
+    <h2 class="serif text-4xl md:text-5xl mb-16 text-center" data-aos="fade-up">Academic Journey</h2>
+    
+    <div class="relative border-l-2 border-blossom-primary/20 ml-3 md:ml-6 space-y-12">
+        
+        <div class="pl-8 md:pl-10 relative group" data-aos="fade-left">
+            <div class="absolute -left-[11px] top-1 w-5 h-5 rounded-full bg-blossom-primary shadow-lg shadow-blossom-primary/50 group-hover:scale-125 transition-transform duration-300"></div>
+            <div class="hover-card p-8 bg-white dark:bg-blossom-darkCard rounded-[2rem] border border-blossom-primary/10 shadow-sm">
+                <div class="flex flex-col md:flex-row justify-between mb-4">
+                    <h4 class="text-xl md:text-2xl font-bold text-blossom-primary flex items-center gap-3">
+                        <i class="fa-solid fa-graduation-cap"></i> MCA
+                    </h4>
+                    <span class="text-[10px] font-bold opacity-50 uppercase tracking-widest mt-2 md:mt-0">2024 - 2026 (Expected)</span>
+                </div>
+                <p class="font-bold text-sm mb-2 text-blossom-text dark:text-blossom-darkText">Shri Ramswaroop Memorial College of Engineering & Management</p>
+                <p class="opacity-60 text-sm leading-relaxed">Specializing in Full-Stack Development, focusing on advanced Python, SQL architectures, and building scalable web applications.</p>
             </div>
         </div>
-    </section>
 
+        <div class="pl-8 md:pl-10 relative group" data-aos="fade-left" data-aos-delay="100">
+            <div class="absolute -left-[11px] top-1 w-5 h-5 rounded-full border-2 border-blossom-primary bg-blossom-base dark:bg-blossom-darkBase group-hover:scale-125 transition-transform duration-300"></div>
+            <div class="hover-card p-8 bg-white dark:bg-blossom-darkCard rounded-[2rem] border border-blossom-primary/10 shadow-sm">
+                <div class="flex flex-col md:flex-row justify-between mb-4">
+                    <h4 class="text-xl md:text-2xl font-bold text-blossom-primary flex items-center gap-3">
+                        <i class="fa-solid fa-university"></i> B.Sc Computer Science
+                    </h4>
+                    <span class="text-[10px] font-bold opacity-50 uppercase tracking-widest mt-2 md:mt-0">2021 - 2024</span>
+                </div>
+                <p class="font-bold text-sm mb-2 text-blossom-text dark:text-blossom-darkText">Shri Jai Narain Misra PG College, Lucknow</p>
+                <p class="opacity-60 text-sm leading-relaxed">Gained strong fundamental knowledge in core computer science principles, logic development, and database management systems.</p>
+            </div>
+        </div>
+
+        <div class="pl-8 md:pl-10 relative group" data-aos="fade-left" data-aos-delay="200">
+            <div class="absolute -left-[11px] top-1 w-5 h-5 rounded-full border-2 border-blossom-primary/50 bg-blossom-base dark:bg-blossom-darkBase group-hover:scale-125 transition-transform duration-300"></div>
+            <div class="hover-card p-8 bg-white dark:bg-blossom-darkCard rounded-[2rem] border border-blossom-primary/10 shadow-sm">
+                <div class="flex flex-col md:flex-row justify-between mb-4">
+                    <h4 class="text-lg md:text-xl font-bold text-blossom-primary flex items-center gap-3">
+                        <i class="fa-solid fa-book"></i> Intermediate (Science)
+                    </h4>
+                    <span class="text-[10px] font-bold opacity-50 uppercase tracking-widest mt-2 md:mt-0">Passed 2021</span>
+                </div>
+                <p class="font-bold text-sm text-blossom-text dark:text-blossom-darkText">St. Christ Public Inter College | UP Board</p>
+            </div>
+        </div>
+
+        <div class="pl-8 md:pl-10 relative group" data-aos="fade-left" data-aos-delay="300">
+            <div class="absolute -left-[11px] top-1 w-5 h-5 rounded-full border-2 border-blossom-primary/30 bg-blossom-base dark:bg-blossom-darkBase group-hover:scale-125 transition-transform duration-300"></div>
+            <div class="hover-card p-8 bg-white dark:bg-blossom-darkCard rounded-[2rem] border border-blossom-primary/10 shadow-sm">
+                <div class="flex flex-col md:flex-row justify-between mb-4">
+                    <h4 class="text-lg md:text-xl font-bold text-blossom-primary flex items-center gap-3">
+                        <i class="fa-solid fa-pencil"></i> Highschool
+                    </h4>
+                    <span class="text-[10px] font-bold opacity-50 uppercase tracking-widest mt-2 md:mt-0">Passed 2019</span>
+                </div>
+                <p class="font-bold text-sm text-blossom-text dark:text-blossom-darkText">St. Christ Public Inter College | UP Board</p>
+            </div>
+        </div>
+    </div>
+</section>
     <div id="projectModal" class="fixed inset-0 z-[100] hidden bg-blossom-base/98 dark:bg-blossom-darkBase/98 backdrop-blur-2xl overflow-y-auto">
         <div class="max-w-5xl mx-auto px-4 md:px-6 py-10">
             <button onclick="closeProject()" class="fixed top-6 right-6 z-[110] p-4 text-2xl bg-white/10 dark:bg-black/10 rounded-full transition-transform active:scale-90">✕</button>
@@ -255,25 +513,126 @@
         </div>
     </div>
 
-    <section id="contact" class="max-w-6xl mx-auto px-6 py-12 md:py-24">
-        <div class="bg-white dark:bg-blossom-darkCard rounded-[3rem] shadow-xl border border-blossom-primary/10 overflow-hidden hover-card" data-aos="zoom-in">
-            <div class="grid grid-cols-1 md:grid-cols-2">
-                <div class="p-10 md:p-16 blossom-gradient text-white">
-                    <h2 class="serif text-4xl md:text-5xl mb-6 text-center md:text-left">Let's Connect</h2>
-                    <p class="opacity-90 mb-12 text-center md:text-left">Actively seeking opportunities to contribute to analytics-driven decision making and full-stack solutions[cite: 8].</p>
-                    <div class="flex items-center justify-center md:justify-start gap-4 font-bold text-sm">shreyamaurya0660@gmail.com</div>
+<section id="certifications" class="max-w-6xl mx-auto px-6 py-12 md:py-24">
+    <h2 class="serif text-4xl md:text-5xl mb-16 text-center md:text-left" data-aos="fade-up">
+        Professional <span class="text-blossom-primary italic">Certifications</span>
+    </h2>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+        <div class="group relative p-[1px] rounded-[2.5rem] bg-gradient-to-br from-blossom-primary/30 to-transparent hover-card shadow-lg" data-aos="zoom-in">
+            <div class="bg-white dark:bg-blossom-darkCard p-8 md:p-10 rounded-[2.4rem] h-full relative overflow-hidden shimmer">
+                <div class="flex justify-between items-start mb-8">
+                    <div class="w-14 h-14 bg-blossom-primary/10 rounded-2xl flex items-center justify-center floating-icon shadow-inner">
+                        <i class="fa-solid fa-robot text-3xl text-blossom-primary"></i>
+                    </div>
+                    <span class="px-3 py-1 bg-blossom-primary/10 text-blossom-primary rounded-full text-[9px] font-bold tracking-widest uppercase border border-blossom-primary/20">Verified</span>
                 </div>
-                <div class="p-10 md:p-16 text-center md:text-left">
-                    <form action="#" class="space-y-4">
-                        <input type="text" placeholder="Name" class="w-full bg-blossom-base dark:bg-white/5 border border-blossom-primary/10 rounded-2xl p-4 outline-none focus:border-blossom-primary transition-colors">
-                        <textarea placeholder="Message" class="w-full bg-blossom-base dark:bg-white/5 border border-blossom-primary/10 rounded-2xl p-4 outline-none focus:border-blossom-primary transition-colors h-32"></textarea>
-                        <button class="w-full bg-blossom-primary text-white font-bold py-4 rounded-2xl shadow-lg hover:brightness-110 transition">Send Message</button>
-                    </form>
+                
+                <h3 class="font-bold text-2xl mb-3 text-blossom-text dark:text-white group-hover:text-blossom-primary transition-colors">Generative AI Foundations</h3>
+                <p class="text-xs font-mono opacity-50 uppercase tracking-[0.2em] mb-6 flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-red-400"></span> UpGrad
+                </p>
+                
+                <p class="text-sm opacity-70 leading-relaxed">
+                    Mastered the core principles of large language models, prompt engineering, and the ethical deployment of AI-driven solutions in modern development workflows.
+                </p>
+            </div>
+        </div>
+        
+        <div class="group relative p-[1px] rounded-[2.5rem] bg-gradient-to-br from-blossom-primary/30 to-transparent hover-card shadow-lg" data-aos="zoom-in" data-aos-delay="100">
+            <div class="bg-white dark:bg-blossom-darkCard p-8 md:p-10 rounded-[2.4rem] h-full relative overflow-hidden shimmer">
+                <div class="flex justify-between items-start mb-8">
+                    <div class="w-14 h-14 bg-blossom-primary/10 rounded-2xl flex items-center justify-center floating-icon shadow-inner" style="animation-delay: -2s;">
+                        <i class="fa-brands fa-java text-3xl text-blossom-primary"></i>
+                    </div>
+                    <span class="px-3 py-1 bg-blossom-primary/10 text-blossom-primary rounded-full text-[9px] font-bold tracking-widest uppercase border border-blossom-primary/20">Verified</span>
+                </div>
+                
+                <h3 class="font-bold text-2xl mb-3 text-blossom-text dark:text-white group-hover:text-blossom-primary transition-colors">Fundamentals of Java</h3>
+                <p class="text-xs font-mono opacity-50 uppercase tracking-[0.2em] mb-6 flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span> Coursera
+                </p>
+                
+                <p class="text-sm opacity-70 leading-relaxed">
+                    Comprehensive study of Object-Oriented Programming (OOP), data structures, and algorithmic logic, forming the backbone of my backend engineering capabilities.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="contact" class="max-w-6xl mx-auto px-6 py-24 md:py-32">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 bg-white dark:bg-blossom-darkCard rounded-[2.5rem] border border-blossom-primary/10 overflow-hidden shadow-2xl" data-aos="fade-up">
+        
+        <div class="lg:col-span-5 p-10 md:p-16 bg-blossom-primary/5 dark:bg-white/5 border-r border-blossom-primary/5">
+            <h2 class="serif text-5xl md:text-6xl text-blossom-text dark:text-white mb-6">Connect.</h2>
+            <p class="text-sm md:text-base opacity-60 leading-relaxed mb-12">
+                I am currently open to Full-Stack Developer roles and internships. If you are looking for a developer who values performance and clean code, let's talk.
+            </p>
+
+            <div class="space-y-8">
+                <div class="flex items-center gap-5 group">
+                    <div class="w-12 h-12 rounded-2xl bg-white dark:bg-white/10 flex items-center justify-center text-blossom-primary border border-blossom-primary/10 group-hover:bg-blossom-primary group-hover:text-white transition-all">
+                        <i class="fa-solid fa-envelope"></i>
+                    </div>
+                    <div>
+                        <span class="text-[10px] font-bold opacity-40 uppercase tracking-widest block">Email Address</span>
+                        <a href="mailto:shreyamaurya0660@gmail.com" class="font-bold hover:text-blossom-primary transition-colors">shreyamaurya0660@gmail.com</a>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-5 group">
+                    <div class="w-12 h-12 rounded-2xl bg-white dark:bg-white/10 flex items-center justify-center text-blossom-primary border border-blossom-primary/10 group-hover:bg-blossom-primary group-hover:text-white transition-all">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </div>
+                    <div>
+                        <span class="text-[10px] font-bold opacity-40 uppercase tracking-widest block">LinkedIn Profile</span>
+                        <a href="https://www.linkedin.com/in/shreya-maurya-bb81b9245/" target="_blank" class="font-bold hover:text-blossom-primary transition-colors">/in/shreya-maurya</a>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-5 group">
+                    <div class="w-12 h-12 rounded-2xl bg-white dark:bg-white/10 flex items-center justify-center text-blossom-primary border border-blossom-primary/10 group-hover:bg-blossom-primary group-hover:text-white transition-all">
+                        <i class="fa-solid fa-file-arrow-down"></i>
+                    </div>
+                    <div>
+                        <span class="text-[10px] font-bold opacity-40 uppercase tracking-widest block">Resume / CV</span>
+                        <a href="https://drive.google.com/file/d/1uKT-6lmZyzq5Mig8OXhVD40aPB9I69oB/view?usp=drive_link" class="font-bold hover:text-blossom-primary transition-colors underline underline-offset-4">Download PDF</a>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
 
+        <div class="lg:col-span-7 p-10 md:p-16">
+            <form action="#" class="space-y-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="space-y-2">
+                        <label class="text-[10px] font-bold uppercase tracking-widest opacity-40 ml-1">Full Name</label>
+                        <input type="text" required placeholder="Enter your name" 
+                            class="w-full bg-blossom-base/50 dark:bg-white/5 border border-blossom-primary/10 rounded-xl p-4 outline-none focus:border-blossom-primary transition-all font-medium text-sm">
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-[10px] font-bold uppercase tracking-widest opacity-40 ml-1">Email Address</label>
+                        <input type="email" required placeholder="name@company.com" 
+                            class="w-full bg-blossom-base/50 dark:bg-white/5 border border-blossom-primary/10 rounded-xl p-4 outline-none focus:border-blossom-primary transition-all font-medium text-sm">
+                    </div>
+                </div>
+
+                <div class="space-y-2">
+                    <label class="text-[10px] font-bold uppercase tracking-widest opacity-40 ml-1">Message</label>
+                    <textarea required placeholder="Briefly describe your inquiry or project details..." 
+                        class="w-full bg-blossom-base/50 dark:bg-white/5 border border-blossom-primary/10 rounded-xl p-4 outline-none focus:border-blossom-primary transition-all font-medium text-sm h-32 resize-none"></textarea>
+                </div>
+
+                <div class="pt-4">
+                    <button type="submit" class="w-full md:w-max bg-blossom-text dark:bg-white text-white dark:text-blossom-darkBase px-12 py-4 rounded-xl font-bold uppercase tracking-widest text-[10px] hover:bg-blossom-primary hover:text-white transition-all duration-300 shadow-xl shadow-black/5">
+                        Send Message <i class="fa-solid fa-arrow-right-long ml-2"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</section>
     <footer class="bg-white dark:bg-blossom-darkBase pt-20 pb-10 border-t border-blossom-primary/10 px-6">
         <div class="max-w-6xl mx-auto">
             <div class="flex flex-col md:flex-row justify-between items-center gap-8 mb-12">
@@ -328,62 +687,207 @@ window.addEventListener('load', function() {
             }
         });
 
-     const projectData = {
+const projectData = {
     eternal: { 
         title: "EternalFlame", 
-        desc: "Developed a full-stack e-commerce platform for candle sales with product listing, cart, and order management[cite: 27]. Implemented RESTful APIs for backend operations and MongoDB for data persistence[cite: 28]. Designed responsive UI ensuring cross-device compatibility[cite: 29].", 
+        desc: "A high-performance MERN stack e-commerce platform purpose-built for the artisanal candle industry. I architected a seamless shopping experience featuring dynamic product catalogs, a persistent cart system, and a robust order management workflow. The backend leverages custom RESTful APIs to handle complex data transactions, while MongoDB ensures scalable data persistence for thousands of product variants and user profiles. The frontend was meticulously crafted with Tailwind CSS to provide a modern, mobile-first aesthetic with lightning-fast load times.\n\nKey Achievements:\n• Developed full-stack e-commerce capabilities including cart and order management.\n• Implemented secure RESTful APIs for efficient backend-to-frontend communication.\n• Designed a responsive UI ensuring 100% compatibility across all device sizes.", 
         images: [
             "./img/EternalFlames.index.png", 
-            "./img/EternalFFlames.admin.png",
-            "./img/EternalFlames.Product.png"
+            "./img/EternalFFlames.admin.png", 
+            "./img/EternalFlames.Product.png", 
+            "./img/EternalFlames.Cart.png"
         ], 
-        tech: ["Node.js", "Express.js", "MongoDB", "Tailwind CSS"] 
-    },
-    niftel: { 
-        title: "NiftelInfra", 
-        desc: "Constructed a robust property management dashboard standardizing real estate data visualization[cite: 34]. Formulated secure RESTful API endpoints using Node.js and MongoDB[cite: 36]. Integrated Google Maps API for real-time asset tracking, enhancing field operational accuracy by 25%[cite: 37].", 
-        images: ["/img/EternalFlames.index.png",
-        ],
-        tech: ["HTML5", "Bootstrap", "Node.js", "Multer", "Google Maps API"] 
+        tech: ["Node.js", "Express.js", "MongoDB", "Tailwind CSS", "RESTful APIs"] 
     },
     event: { 
         title: "EventVerse", 
-        desc: "Engineered a secure event management system for college-level events[cite: 32]. Implemented user authentication and registration modules following MVC architecture and clean coding practices for maintainability[cite: 33].", 
+        desc: "A secure, institutional-grade event management engine designed to streamline college coordination and student engagement. Built using the Python-Django framework, the system strictly adheres to MVC architecture to ensure clean separation of concerns and high maintainability. I implemented advanced authentication protocols to protect user data and developed a relational SQL schema to manage complex schedules, registrations, and venue allocations. This project replaced manual coordination processes with an automated, reliable digital solution.\n\nKey Achievements:\n• Engineered a secure institutional event management system for college-level coordination.\n• Implemented robust user authentication and registration modules following MVC architecture.\n• Followed clean coding practices to ensure long-term maintainability and system scalability.", 
         images: [
             "./img/EventVerse.index.png",
-            "./img/Eventverse.gallery.png",
+            "./img/EventVerse.about.png", 
+            "./img/Eventverse.gallery.png", 
             "./img/EventVerse.calendar.png"
         ], 
-        tech: ["Python", "Django", "SQL"] 
+        tech: ["Python", "Django", "SQL", "MVC Architecture", "Auth Modules"] 
+    },
+    NiftelInfra: { 
+        title: "Niftel Infra", 
+        desc: "An operational property management portal developed during my internship to standardize and visualize real-estate assets. I integrated the Google Maps API to provide real-time tracking of properties, which directly improved field operational accuracy by ~25%. The platform features a customized dashboard for administrative control, allowing for secure management of property datasets. I formulated the backend using Node.js to deliver optimized data processing speeds and a responsive experience for internal teams.\n\nKey Achievements:\n• Integrated Google Maps API for real-time asset tracking, enhancing field accuracy by 25%.\n• Accelerated backend data processing by ~20% through API optimization and efficient tooling.\n• Formulated secure RESTful API endpoints to manage complex property datasets.", 
+        images: [
+            "./img/niftelInfra.index.png",
+            "./img/NiftelInfra.png",
+            "./img/NiftelInfra.propertiesadmin.png", 
+            "./img/NiftelInfra.propertieslocation.png", 
+            "./img/NiftelInfra.map.png"
+        ], 
+        tech: ["Node.js", "Bootstrap", "Google Maps API", "MongoDB/SQL", "Data Visualization"] 
     }
 };
-        let modalSwiper;
-        function openProject(id) {
-            const p = projectData[id];
-            document.getElementById('modalTitle').innerText = p.title;
-            document.getElementById('modalDesc').innerText = p.desc;
-            const techContainer = document.getElementById('techList');
-            techContainer.innerHTML = '';
-            p.tech.forEach(t => {
-                const span = document.createElement('span');
-                span.className = "px-3 py-1 bg-blossom-primary/10 rounded-lg text-[10px] font-bold";
-                span.innerText = t; techContainer.appendChild(span);
-            });
-            const gallery = document.getElementById('modalGallery');
-            gallery.innerHTML = '';
-            p.images.forEach(img => { gallery.innerHTML += `<div class="swiper-slide"><img src="${img}"></div>`; });
-            document.getElementById('projectModal').classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-            if (modalSwiper) modalSwiper.destroy();
-            modalSwiper = new Swiper(".modalSwiper", { 
-                pagination: { el: ".swiper-pagination", clickable: true }, 
-                navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" }, 
-                loop: p.images.length > 1 
-            });
-        }
+const projectCards = document.querySelectorAll('.project-hover-card');
+let modalSwiper;
 
-        function closeProject() { document.getElementById('projectModal').classList.add('hidden'); document.body.style.overflow = 'auto'; }
+projectCards.forEach(card => {
+    const projectKey = card.getAttribute('data-project');
+    const imgElement = card.querySelector('.project-main-img');
+    const data = projectData[projectKey];
+    
+    let cycleInterval;
+    let currentIndex = 0;
+
+    // --- HOVER LOGIC: Cycle Images ---
+    card.addEventListener('mouseenter', () => {
+        if (!data.images || data.images.length <= 1) return;
+        cycleInterval = setInterval(() => {
+            currentIndex = (currentIndex + 1) % data.images.length;
+            imgElement.style.opacity = '0';
+            setTimeout(() => {
+                imgElement.src = data.images[currentIndex];
+                imgElement.style.opacity = '1';
+            }, 200);
+        }, 1500);
+    });
+
+    card.addEventListener('mouseleave', () => {
+        clearInterval(cycleInterval);
+        currentIndex = 0;
+        imgElement.src = data.images[0];
+        imgElement.style.opacity = '1';
+    });
+
+    // --- CLICK LOGIC: Open Project Details ---
+    card.addEventListener('click', (e) => {
+        // Prevent click if clicking the GitHub icon specifically
+        if (e.target.closest('a')) return;
+        
+        openProjectDetails(projectKey);
+    });
+});
+
+function openProjectDetails(id) {
+    const p = projectData[id];
+    document.getElementById('modalTitle').innerText = p.title;
+    document.getElementById('modalDesc').innerText = p.desc;
+    
+    // Build Tech Badges
+    const techContainer = document.getElementById('techList');
+    techContainer.innerHTML = '';
+    p.tech.forEach(t => {
+        const span = document.createElement('span');
+        span.className = "px-3 py-1 bg-blossom-primary/20 text-blossom-primary rounded-lg text-[10px] font-bold uppercase tracking-wider";
+        span.innerText = t;
+        techContainer.appendChild(span);
+    });
+
+    // Build Swiper Gallery
+    const gallery = document.getElementById('modalGallery');
+    gallery.innerHTML = '';
+    p.images.forEach(img => {
+        gallery.innerHTML += `<div class="swiper-slide"><img src="${img}" class="rounded-2xl shadow-lg"></div>`;
+    });
+
+    document.getElementById('projectModal').classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+
+    if (modalSwiper) modalSwiper.destroy();
+    modalSwiper = new Swiper(".modalSwiper", { 
+        pagination: { el: ".swiper-pagination", clickable: true }, 
+        navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" }, 
+        loop: p.images.length > 1 
+    });
+}
+
+function closeProject() {
+    document.getElementById('projectModal').classList.add('hidden');
+    document.body.style.overflow = 'auto';
+}
+        // --- Magnetic Button Logic ---
+const magneticAreas = document.querySelectorAll('.magnetic-area');
+
+magneticAreas.forEach(area => {
+    area.addEventListener('mousemove', function(e) {
+        const btn = this.querySelector('.magnetic-btn');
+        const rect = this.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        
+        btn.style.transform = `translate(${x * 0.3}px, ${y * 0.5}px)`;
+    });
+
+    area.addEventListener('mouseleave', function() {
+        const btn = this.querySelector('.magnetic-btn');
+        btn.style.transform = `translate(0px, 0px)`;
+    });
+});
+
+// --- Typewriter Initialization ---
+new Typewriter('#typewriter-text', {
+    strings: [
+        'Crafting Scalable MERN Applications.',
+        'Architecting Python & Django Solutions.',
+        'Building 99% Uptime Architectures.',
+        'MCA Candidate @ SRMCEM.'
+    ],
+    autoStart: true,
+    loop: true,
+    cursor: '_',
+    delay: 50
+});
+
+
+    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+    <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
+
+    <script>
+        // Loader logic
+        window.addEventListener('load', function() {
+            const loader = document.getElementById('loader');
+            setTimeout(() => {
+                loader.style.opacity = '0';
+                setTimeout(() => { loader.style.display = 'none'; AOS.refresh(); }, 700);
+            }, 1000);
+            
+            // Typewriter logic
+            new Typewriter('#typewriter-text', {
+                strings: ['Full Stack Developer.', 'Django Developer.', 'Problem Solver.','GenAI Enthusiast' , 'Building scalable solutions.'],
+                autoStart: true, loop: true, delay: 50
+            });
+        });
+
+        // Magnetic Logic
+        document.querySelectorAll('.magnetic-area').forEach(area => {
+            area.addEventListener('mousemove', (e) => {
+                const btn = area.querySelector('.magnetic-btn');
+                const rect = area.getBoundingClientRect();
+                const x = (e.clientX - rect.left - rect.width / 2) * 0.3;
+                const y = (e.clientY - rect.top - rect.height / 2) * 0.3;
+                btn.style.transform = `translate(${x}px, ${y}px)`;
+            });
+            area.addEventListener('mouseleave', (e) => {
+                area.querySelector('.magnetic-btn').style.transform = `translate(0, 0)`;
+            });
+        });
+
+        window.addEventListener('scroll', function() {
+            const nav = document.getElementById('main-nav');
+            window.scrollY > 80 ? nav.classList.add('nav-scrolled') : nav.classList.remove('nav-scrolled');
+        });
+
         AOS.init({ duration: 1000, once: true });
+window.addEventListener('scroll', function() {
+    const nav = document.getElementById('main-nav');
+    // Trigger scroll effect earlier (20px) for better responsiveness
+    if (window.scrollY > 20) {
+        nav.classList.add('nav-scrolled');
+        nav.classList.remove('nav-transparent');
+    } else {
+        nav.classList.remove('nav-scrolled');
+        nav.classList.add('nav-transparent');
+    }
+});
+        // Keep your Swiper/openProject logic here
     </script>
 </body>
 </html>
