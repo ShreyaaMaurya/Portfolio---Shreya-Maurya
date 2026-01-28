@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tailwindcss -i ./main/src/input.css -o ./main/template/output.css",
     "watch": "tailwindcss -i ./main/src/input.css -o ./main/template/output.css --watch",
-    "dev": "npm run build && serve main/template -p 5000"
+    "dev": "serve main/template -p 3000"
   },
   "keywords": [],
   "author": "",
