@@ -40,30 +40,29 @@
 
 
 
-body, html {
-    margin-top: 0 !important;
-    padding-top: 0 !important;
+/* This is the most important fix for the right-side gap */
+html, body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* This clips any elements that try to go off-screen to the right */
+    position: relative;
+}
+
+/* Ensure the header doesn't allow its children to leak out */
+header {
+    width: 100%;
+    overflow: hidden;
 }
         @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;600&display=swap');
         body { font-family: 'Inter', sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
         .serif { font-family: 'DM+Serif+Display', serif; }
         .swiper { width: 100%; height: 100%; }
         .swiper-slide img { width: 100%; height: 100%; object-fit: cover; }
-        
-        #main-nav { transition: all 0.4s ease-in-out; }
-        .nav-transparent { background-color: transparent !important; backdrop-filter: blur(0px) !important; border-color: transparent !important; }
-        
-        /* Scrolled Glassmorphism */
-        .nav-scrolled { background-color: rgba(251, 246, 247, 0.75) !important; backdrop-filter: blur(12px) !important; border-bottom: 1px solid rgba(105, 96, 102, 0.1) !important; }
-        .dark .nav-scrolled { background-color: rgba(30, 27, 29, 0.75) !important; border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important; }
-
+    
         .blossom-gradient { background: linear-gradient(135deg, #DCB4BC 0%, #D6CBD5 100%); }
         
-        /* Navbar Underline Animation */
-        #main-nav a { position: relative; padding-bottom: 4px; }
-        #main-nav a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: 0; left: 0; background-color: #DCB4BC; transition: width 0.3s ease-in-out; }
-        #main-nav a:hover::after { width: 100%; }
-
+       
         .swiper-button-next, .swiper-button-prev { color: #DCB4BC !important; background: rgba(255,255,255,0.3); width: 35px !important; height: 35px !important; border-radius: 50%; backdrop-filter: blur(4px); }
         .no-scrollbar::-webkit-scrollbar { display: none; }
 
@@ -167,8 +166,49 @@ header {
     transition: opacity 0.3s ease-in-out;
     opacity: 1;
 }
+
+/* Ensure the nav container transitions smoothly when scrolling */
+#main-nav.scrolled {
+    top: 0;
+    width: 100%;
+    max-width: 100%;
+}
+#main-nav.scrolled > div {
+    border-radius: 0;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    background-color: rgba(251, 246, 247, 0.8); /* blossom-base with opacity */
+}
+.dark #main-nav.scrolled > div {
+    background-color: rgba(30, 27, 29, 0.8); /* blossom-darkBase with opacity */
+}
+
+/* Mobile scaling for the hero section */
+@media (max-width: 640px) {
+    .serif.text-5xl { font-size: 2.5rem !important; line-height: 1.1; }
+    .header-img-container { transform: scale(0.8); }
+    /* Prevent tech icons from flying too far off screen */
+    .animate-tech-float-1, .animate-tech-float-2, .animate-tech-float-3 { 
+        padding: 0.5rem !important; 
+    }
+}
+
+/* Adjust the Scrolled State to stay responsive */
+#main-nav.scrolled {
+    top: 0;
+    width: 100%;
+}
+
+#main-nav.scrolled > div {
+    border-radius: 0;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
     </style>
 </head>
+<body class="bg-blossom-base text-blossom-text dark:bg-blossom-darkBase dark:text-blossom-darkText transition-colors duration-500">
 
 <div id="loader" class="fixed inset-0 z-[200] bg-blossom-darkBase flex flex-col items-center justify-center transition-opacity duration-700">
     <div class="relative w-20 h-20">
@@ -177,29 +217,36 @@ header {
     </div>
     <div class="mt-6 serif text-1xl animate-pulse tracking-widest text-blossom-darkText">LOADING...</div>
 </div>
+<nav id="main-nav" class="fixed top-4 inset-x-0 z-50 w-[92%] max-w-5xl mx-auto transition-all duration-500">
+    <div class="bg-white/60 dark:bg-blossom-darkCard/60 backdrop-blur-xl border border-white/20 dark:border-white/10 rounded-2xl px-4 md:px-8 h-14 md:h-16 flex justify-between items-center shadow-lg">
+        
+        <div class="flex items-center">
+            <div class="text-sm md:text-base font-bold tracking-tighter serif whitespace-nowrap">
+                FULL STACK DEV<span class="text-blossom-primary">.</span>
+            </div>
+        </div>
 
-<body class="bg-blossom-base text-blossom-text dark:bg-blossom-darkBase dark:text-blossom-darkText transition-colors duration-500">
-<nav id="main-nav" class="fixed top-0 z-50 w-full nav-transparent transition-all duration-300">
-    <div class="max-w-6xl mx-auto px-4 md:px-6 h-auto md:h-20 py-4 md:py-0 flex flex-col md:flex-row justify-between items-center gap-4">
-        <div class="text-xl font-bold tracking-tighter serif">FULL STACK DEV.</div>
+        <div class="flex items-center gap-4 md:gap-8">
+            <div class="hidden lg:flex items-center space-x-8 text-xs font-bold uppercase tracking-widest">
+                <a href="#about2" class="hover:text-blossom-primary transition-colors">About</a>
+                <a href="#skills" class="hover:text-blossom-primary transition-colors">Skills</a>
+                <a href="#experience" class="hover:text-blossom-primary transition-colors">Experience</a>
+                <a href="#projects" class="hover:text-blossom-primary transition-colors">Work</a>
+                <a href="#education" class="hover:text-blossom-primary transition-colors">Education</a>
+                <a href="#certifications" class="hover:text-blossom-primary transition-colors">Certifications</a>
+                <a href="#contact" class="hover:text-blossom-primary transition-colors">Contact</a>
+            </div>
 
-        <div class="flex flex-wrap justify-center items-center gap-x-4 gap-y-3 md:gap-x-8 text-[10px] md:text-sm font-medium">
-            <a href="#about2" class="nav-link-hover whitespace-nowrap">About</a>
-            <a href="#skills" class="nav-link-hover whitespace-nowrap">Skills</a>
-            <a href="#experience" class="nav-link-hover whitespace-nowrap">Experience</a>
-            <a href="#projects" class="nav-link-hover whitespace-nowrap">Work</a>
-            <a href="#education" class="nav-link-hover whitespace-nowrap">Education</a>
-            <a href="#certifications" class="nav-link-hover whitespace-nowrap">Certifications</a>
-            <a href="#contact" class="hover:text-blossom-primary transition-colors whitespace-nowrap font-bold">Contact</a>
-            
-            <button onclick="document.documentElement.classList.toggle('dark')" class="p-1.5 md:p-2 rounded-full bg-blossom-text/5 dark:bg-white/5 shrink-0 transition-transform hover:scale-110">
-                <span class="hidden dark:inline text-xs">☀️</span><span class="dark:hidden text-xs">🌙</span>
+            <button onclick="document.documentElement.classList.toggle('dark')" 
+                    class="p-2 rounded-xl bg-blossom-text/5 dark:bg-white/10 hover:bg-blossom-primary/20 transition-all active:scale-90 border border-blossom-primary/10">
+                <span class="hidden dark:inline text-sm">☀️</span>
+                <span class="dark:hidden text-sm">🌙</span>
             </button>
         </div>
     </div>
 </nav>
-<header id="about" class="relative max-w-6xl mx-auto px-6 pt-24 md:pt-32 pb-16 md:pb-32 grid grid-cols-1 md:grid-cols-2 gap-12 items-center overflow-hidden">
-    <div class="orb w-64 h-64 bg-blossom-primary/20 top-0 left-0 opacity-50"></div>
+<header class="relative max-w-6xl mx-auto px-4 sm:px-6 pt-24 md:pt-32 pb-16 md:pb-32 grid grid-cols-1 md:grid-cols-2 gap-12 items-center overflow-hidden">
+    <!-- <div class="orb w-64 h-64 bg-blossom-primary/20 top-0 left-0 opacity-50"></div> -->
     <div class="orb w-48 h-48 bg-purple-400/10 bottom-10 right-10 opacity-50" style="animation-delay: -5s;"></div>
 
     <div data-aos="fade-right" class="text-center md:text-left order-2 md:order-1 relative z-20">
@@ -603,8 +650,8 @@ header {
         </div>
 
         <div class="lg:col-span-7 p-10 md:p-16">
-            <form action="#" class="space-y-8">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<form id="contact-form" onsubmit="handleFormSubmit(event)" class="space-y-8">
+           <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div class="space-y-2">
                         <label class="text-[10px] font-bold uppercase tracking-widest opacity-40 ml-1">Full Name</label>
                         <input type="text" required placeholder="Enter your name" 
@@ -678,14 +725,23 @@ window.addEventListener('load', function() {
         }, 700);
     }, 1000); // 1-second delay to ensure smooth loading feel
 });
-        window.addEventListener('scroll', function() {
-            const nav = document.getElementById('main-nav');
-            if (window.scrollY > 80) {
-                nav.classList.remove('nav-transparent'); nav.classList.add('nav-scrolled');
-            } else {
-                nav.classList.add('nav-transparent'); nav.classList.remove('nav-scrolled');
-            }
-        });
+    
+// Clean Scroll Logic: Only handles the "floating vs pinned" state
+window.addEventListener('scroll', () => {
+    const nav = document.getElementById('main-nav');
+    // If scrolled more than 20px, pin to top, otherwise float
+    if (window.scrollY > 20) {
+        nav.classList.add('top-0', 'w-full', 'max-w-full');
+        nav.classList.remove('top-4', 'w-[95%]', 'max-w-5xl');
+        nav.firstElementChild.classList.add('rounded-none');
+        nav.firstElementChild.classList.remove('rounded-2xl');
+    } else {
+        nav.classList.remove('top-0', 'w-full', 'max-w-full');
+        nav.classList.add('top-4', 'w-[95%]', 'max-w-5xl');
+        nav.firstElementChild.classList.remove('rounded-none');
+        nav.firstElementChild.classList.add('rounded-2xl');
+    }
+});
 
 const projectData = {
     eternal: { 
@@ -869,25 +925,40 @@ new Typewriter('#typewriter-text', {
                 area.querySelector('.magnetic-btn').style.transform = `translate(0, 0)`;
             });
         });
+   AOS.init({ duration: 1000, once: true });
+      
+        // form logic here
 
-        window.addEventListener('scroll', function() {
-            const nav = document.getElementById('main-nav');
-            window.scrollY > 80 ? nav.classList.add('nav-scrolled') : nav.classList.remove('nav-scrolled');
+        const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    const btn = e.target.querySelector('button');
+    btn.disabled = true;
+    btn.innerText = "Syncing...";
+
+    const formData = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        message: document.getElementById('message').value
+    };
+
+    try {
+        const response = await fetch('/api/contact', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(formData)
         });
 
-        AOS.init({ duration: 1000, once: true });
-window.addEventListener('scroll', function() {
-    const nav = document.getElementById('main-nav');
-    // Trigger scroll effect earlier (20px) for better responsiveness
-    if (window.scrollY > 20) {
-        nav.classList.add('nav-scrolled');
-        nav.classList.remove('nav-transparent');
-    } else {
-        nav.classList.remove('nav-scrolled');
-        nav.classList.add('nav-transparent');
+        if (response.ok) {
+            alert("Sync Successful! I'll get back to you soon.");
+            e.target.reset(); // Clear the form
+        }
+    } catch (err) {
+        alert("Sync Failed. Please try again later.");
+    } finally {
+        btn.disabled = false;
+        btn.innerText = "Send Message";
     }
-});
-        // Keep your Swiper/openProject logic here
+};
     </script>
 </body>
 </html>
