@@ -1,363 +1,641 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" class="dark">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Shreya Maurya | Portfolio</title>
-    
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js" crossorigin="anonymous"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <script
+      src="https://unpkg.com/typewriter-effect@latest/dist/core.js"
+      crossorigin="anonymous"
+    ></script>
     <script>
-        tailwind.config = {
-            darkMode: 'class', // Critical for manual toggling
-            theme: {
-                extend: {
-                    colors: {
-                        blossom: {
-                            base: '#FBF6F7',
-                            card: '#ffffff',
-                            text: '#696066',
-                            primary: '#DCB4BC',
-                            darkBase: '#1E1B1D',
-                            darkCard: '#2D282C',
-                            darkText: '#E2DBE3',
-                            darkPrimary: '#EAC7CE',
-                        }
-                    }
-                }
-            }
-        }
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              blossom: {
+                base: "#FBF6F7",
+                card: "#ffffff",
+                text: "#696066",
+                primary: "#DCB4BC",
+                darkBase: "#1E1B1D",
+                darkCard: "#2D282C",
+                darkText: "#E2DBE3",
+                darkPrimary: "#EAC7CE",
+              },
+            },
+          },
+        },
+      };
     </script>
     <style>
-        * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
+      html,
+      body {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+        position: relative;
+      }
 
+      header {
+        width: 100%;
+        overflow: hidden;
+      }
+      @import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;600&display=swap");
+      body {
+        font-family: "Inter", sans-serif;
+        overflow-x: hidden;
+        scroll-behavior: smooth;
+      }
+      .serif {
+        font-family: "DM+Serif+Display", serif;
+      }
+      .swiper {
+        width: 100%;
+        height: 100%;
+      }
+      .swiper-slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
 
-/* This is the most important fix for the right-side gap */
-html, body {
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden; /* This clips any elements that try to go off-screen to the right */
-    position: relative;
-}
+      .blossom-gradient {
+        background: linear-gradient(135deg, #dcb4bc 0%, #d6cbd5 100%);
+      }
 
-/* Ensure the header doesn't allow its children to leak out */
-header {
-    width: 100%;
-    overflow: hidden;
-}
-        @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;600&display=swap');
-        body { font-family: 'Inter', sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
-        .serif { font-family: 'DM+Serif+Display', serif; }
-        .swiper { width: 100%; height: 100%; }
-        .swiper-slide img { width: 100%; height: 100%; object-fit: cover; }
-    
-        .blossom-gradient { background: linear-gradient(135deg, #DCB4BC 0%, #D6CBD5 100%); }
-        
-       
-        .swiper-button-next, .swiper-button-prev { color: #DCB4BC !important; background: rgba(255,255,255,0.3); width: 35px !important; height: 35px !important; border-radius: 50%; backdrop-filter: blur(4px); }
-        .no-scrollbar::-webkit-scrollbar { display: none; }
+      .swiper-button-next,
+      .swiper-button-prev {
+        color: #dcb4bc !important;
+        background: rgba(255, 255, 255, 0.3);
+        width: 35px !important;
+        height: 35px !important;
+        border-radius: 50%;
+        backdrop-filter: blur(4px);
+      }
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
 
-        .hover-card { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative; overflow: hidden;}
-        .hover-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(220, 180, 188, 0.15); }
-        .hover-card::before { content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%; background: linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent); transform: skewX(-25deg); transition: 0.5s; }
-        .hover-card:hover::before { left: 150%; }
+      .hover-card {
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        position: relative;
+        overflow: hidden;
+      }
+      .hover-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(220, 180, 188, 0.15);
+      }
+      .hover-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 50%;
+        height: 100%;
+        background: linear-gradient(
+          to right,
+          transparent,
+          rgba(255, 255, 255, 0.1),
+          transparent
+        );
+        transform: skewX(-25deg);
+        transition: 0.5s;
+      }
+      .hover-card:hover::before {
+        left: 150%;
+      }
 
-        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-10px); } 100% { transform: translateY(0px); } }
-        .floating-icon { animation: float 3s ease-in-out infinite; }
+      @keyframes float {
+        0% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+        100% {
+          transform: translateY(0px);
+        }
+      }
+      .floating-icon {
+        animation: float 3s ease-in-out infinite;
+      }
 
-        /* Animated Gradient Background for Header */
-header {
-    background: radial-gradient(circle at 50% 50%, rgba(220, 180, 188, 0.05) 0%, transparent 50%);
-}
+      /* Animated Gradient Background for Header */
+      header {
+        background: radial-gradient(
+          circle at 50% 50%,
+          rgba(220, 180, 188, 0.05) 0%,
+          transparent 50%
+        );
+      }
 
-/* Mobile Menu Link Styling */
-.mobile-link {
-    transition: all 0.3s ease;
-    opacity: 0.8;
-}
-.mobile-link:hover {
-    color: #DCB4BC;
-    transform: scale(1.1);
-    opacity: 1;
-}
+      /* Mobile Menu Link Styling */
+      .mobile-link {
+        transition: all 0.3s ease;
+        opacity: 0.8;
+      }
+      .mobile-link:hover {
+        color: #dcb4bc;
+        transform: scale(1.1);
+        opacity: 1;
+      }
 
-/* Active Class for Mobile Menu */
-.menu-open {
-    transform: translateX(0) !important;
-}
+      /* Active Class for Mobile Menu */
+      .menu-open {
+        transform: translateX(0) !important;
+      }
 
-/* Blur effect when menu is open */
-.menu-blur {
-    filter: blur(5px);
-    pointer-events: none;
-}
+      /* Blur effect when menu is open */
+      .menu-blur {
+        filter: blur(5px);
+        pointer-events: none;
+      }
 
-/* Floating Glass Orbs */
-.orb {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(80px);
-    z-index: -1;
-    animation: orbit 20s linear infinite;
-}
+      /* Floating Glass Orbs */
+      .orb {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(80px);
+        z-index: -1;
+        animation: orbit 20s linear infinite;
+      }
 
-@keyframes orbit {
-    from { transform: rotate(0deg) translateX(50px) rotate(0deg); }
-    to { transform: rotate(360deg) translateX(50px) rotate(-360deg); }
-}
+      @keyframes orbit {
+        from {
+          transform: rotate(0deg) translateX(50px) rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg) translateX(50px) rotate(-360deg);
+        }
+      }
 
-/* Magnetic Button Feel */
-.magnetic-btn {
-    display: inline-block;
-    transition: transform 0.2s cubic-bezier(0.23, 1, 0.32, 1);
-}
+      /* Magnetic Button Feel */
+      .magnetic-btn {
+        display: inline-block;
+        transition: transform 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+      }
 
-/* Staggered Text Animation */
-.reveal-text {
-    overflow: hidden;
-    display: block;
-}
-.reveal-text span {
-    display: block;
-    transform: translateY(100%);
-    animation: reveal 0.8s cubic-bezier(0.77, 0, 0.175, 1) forwards;
-}
+      /* Staggered Text Animation */
+      .reveal-text {
+        overflow: hidden;
+        display: block;
+      }
+      .reveal-text span {
+        display: block;
+        transform: translateY(100%);
+        animation: reveal 0.8s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+      }
 
-@keyframes reveal {
-    0% { transform: translateY(100%); }
-    100% { transform: translateY(0); }
-}
+      @keyframes reveal {
+        0% {
+          transform: translateY(100%);
+        }
+        100% {
+          transform: translateY(0);
+        }
+      }
 
-/* Unique floating for tech stack icons */
-@keyframes techFloat {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    33% { transform: translateY(-15px) rotate(2deg); }
-    66% { transform: translateY(5px) rotate(-2deg); }
-}
+      /* Unique floating for tech stack icons */
+      @keyframes techFloat {
+        0%,
+        100% {
+          transform: translateY(0) rotate(0deg);
+        }
+        33% {
+          transform: translateY(-15px) rotate(2deg);
+        }
+        66% {
+          transform: translateY(5px) rotate(-2deg);
+        }
+      }
 
-/* Unique floating for each tech tag */
-@keyframes tech-float-1 {
-    0%, 100% { transform: translate(0, 0) rotate(0deg); }
-    50% { transform: translate(-10px, -15px) rotate(-5deg); }
-}
-@keyframes tech-float-2 {
-    0%, 100% { transform: translate(0, 0) rotate(0deg); }
-    50% { transform: translate(12px, -10px) rotate(8deg); }
-}
-@keyframes tech-float-3 {
-    0%, 100% { transform: translate(0, 0) rotate(0deg); }
-    50% { transform: translate(-8px, 12px) rotate(-10deg); }
-}
+      /* Unique floating for each tech tag */
+      @keyframes tech-float-1 {
+        0%,
+        100% {
+          transform: translate(0, 0) rotate(0deg);
+        }
+        50% {
+          transform: translate(-10px, -15px) rotate(-5deg);
+        }
+      }
+      @keyframes tech-float-2 {
+        0%,
+        100% {
+          transform: translate(0, 0) rotate(0deg);
+        }
+        50% {
+          transform: translate(12px, -10px) rotate(8deg);
+        }
+      }
+      @keyframes tech-float-3 {
+        0%,
+        100% {
+          transform: translate(0, 0) rotate(0deg);
+        }
+        50% {
+          transform: translate(-8px, 12px) rotate(-10deg);
+        }
+      }
 
-.animate-tech-float-1 { animation: tech-float-1 4s ease-in-out infinite; }
-.animate-tech-float-2 { animation: tech-float-2 5s ease-in-out infinite; }
-.animate-tech-float-3 { animation: tech-float-3 4.5s ease-in-out infinite; }
+      .animate-tech-float-1 {
+        animation: tech-float-1 4s ease-in-out infinite;
+      }
+      .animate-tech-float-2 {
+        animation: tech-float-2 5s ease-in-out infinite;
+      }
+      .animate-tech-float-3 {
+        animation: tech-float-3 4.5s ease-in-out infinite;
+      }
 
-.project-main-img {
-    transition: opacity 0.3s ease-in-out;
-    opacity: 1;
-}
+      .project-main-img {
+        transition: opacity 0.3s ease-in-out;
+        opacity: 1;
+      }
 
-/* Ensure the nav container transitions smoothly when scrolling */
-#main-nav.scrolled {
-    top: 0;
-    width: 100%;
-    max-width: 100%;
-}
-#main-nav.scrolled > div {
-    border-radius: 0;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    background-color: rgba(251, 246, 247, 0.8); /* blossom-base with opacity */
-}
-.dark #main-nav.scrolled > div {
-    background-color: rgba(30, 27, 29, 0.8); /* blossom-darkBase with opacity */
-}
+      /* Ensure the nav container transitions smoothly when scrolling */
+      #main-nav.scrolled {
+        top: 0;
+        width: 100%;
+        max-width: 100%;
+      }
+      #main-nav.scrolled > div {
+        border-radius: 0;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        background-color: rgba(
+          251,
+          246,
+          247,
+          0.8
+        ); /* blossom-base with opacity */
+      }
+      .dark #main-nav.scrolled > div {
+        background-color: rgba(
+          30,
+          27,
+          29,
+          0.8
+        ); /* blossom-darkBase with opacity */
+      }
 
-/* Mobile scaling for the hero section */
-@media (max-width: 640px) {
-    .serif.text-5xl { font-size: 2.5rem !important; line-height: 1.1; }
-    .header-img-container { transform: scale(0.8); }
-    /* Prevent tech icons from flying too far off screen */
-    .animate-tech-float-1, .animate-tech-float-2, .animate-tech-float-3 { 
-        padding: 0.5rem !important; 
-    }
-}
+      /* Mobile scaling for the hero section */
+      @media (max-width: 640px) {
+        .serif.text-5xl {
+          font-size: 2.5rem !important;
+          line-height: 1.1;
+        }
+        .header-img-container {
+          transform: scale(0.8);
+        }
+        /* Prevent tech icons from flying too far off screen */
+        .animate-tech-float-1,
+        .animate-tech-float-2,
+        .animate-tech-float-3 {
+          padding: 0.5rem !important;
+        }
+      }
 
-/* Adjust the Scrolled State to stay responsive */
-#main-nav.scrolled {
-    top: 0;
-    width: 100%;
-}
+      /* Adjust the Scrolled State to stay responsive */
+      #main-nav.scrolled {
+        top: 0;
+        width: 100%;
+      }
 
-#main-nav.scrolled > div {
-    border-radius: 0;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-}
+      #main-nav.scrolled > div {
+        border-radius: 0;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+      }
     </style>
-</head>
-<body class="bg-blossom-base text-blossom-text dark:bg-blossom-darkBase dark:text-blossom-darkText transition-colors duration-500">
-
-<div id="loader" class="fixed inset-0 z-[200] bg-blossom-darkBase flex flex-col items-center justify-center transition-opacity duration-700">
-    <div class="relative w-20 h-20">
-        <div class="absolute inset-0 border-4 border-blossom-primary/20 rounded-full"></div>
-        <div class="absolute inset-0 border-4 border-t-blossom-primary rounded-full animate-spin"></div>
+  </head>
+  <body
+    class="bg-blossom-base text-blossom-text dark:bg-blossom-darkBase dark:text-blossom-darkText transition-colors duration-500"
+  >
+    <div
+      id="loader"
+      class="fixed inset-0 z-[200] bg-blossom-darkBase flex flex-col items-center justify-center transition-opacity duration-700"
+    >
+      <div class="relative w-20 h-20">
+        <div
+          class="absolute inset-0 border-4 border-blossom-primary/20 rounded-full"
+        ></div>
+        <div
+          class="absolute inset-0 border-4 border-t-blossom-primary rounded-full animate-spin"
+        ></div>
+      </div>
+      <div
+        class="mt-6 serif text-1xl animate-pulse tracking-widest text-blossom-darkText"
+      >
+        LOADING...
+      </div>
     </div>
-    <div class="mt-6 serif text-1xl animate-pulse tracking-widest text-blossom-darkText">LOADING...</div>
-</div>
-<nav id="main-nav" class="fixed top-4 inset-x-0 z-50 w-[92%] max-w-5xl mx-auto transition-all duration-500">
-    <div class="bg-white/60 dark:bg-blossom-darkCard/60 backdrop-blur-xl border border-white/20 dark:border-white/10 rounded-2xl px-4 md:px-8 h-14 md:h-16 flex justify-between items-center shadow-lg">
-        
+    <nav
+      id="main-nav"
+      class="fixed top-4 inset-x-0 z-50 w-[92%] max-w-5xl mx-auto transition-all duration-500"
+    >
+      <div
+        class="bg-white/60 dark:bg-blossom-darkCard/60 backdrop-blur-xl border border-white/20 dark:border-white/10 rounded-2xl px-4 md:px-8 h-14 md:h-16 flex justify-between items-center shadow-lg"
+      >
         <div class="flex items-center">
-            <div class="text-sm md:text-base font-bold tracking-tighter serif whitespace-nowrap">
-                FULL STACK DEV<span class="text-blossom-primary">.</span>
-            </div>
+          <div
+            class="text-sm md:text-base font-bold tracking-tighter serif whitespace-nowrap"
+          >
+            FULL STACK DEV<span class="text-blossom-primary">.</span>
+          </div>
         </div>
 
         <div class="flex items-center gap-4 md:gap-8">
-            <div class="hidden lg:flex items-center space-x-8 text-xs font-bold uppercase tracking-widest">
-                <a href="#about2" class="hover:text-blossom-primary transition-colors">About</a>
-                <a href="#skills" class="hover:text-blossom-primary transition-colors">Skills</a>
-                <a href="#experience" class="hover:text-blossom-primary transition-colors">Experience</a>
-                <a href="#projects" class="hover:text-blossom-primary transition-colors">Work</a>
-                <a href="#education" class="hover:text-blossom-primary transition-colors">Education</a>
-                <a href="#certifications" class="hover:text-blossom-primary transition-colors">Certifications</a>
-                <a href="#contact" class="hover:text-blossom-primary transition-colors">Contact</a>
-            </div>
+          <div
+            class="hidden lg:flex items-center space-x-8 text-xs font-bold uppercase tracking-widest"
+          >
+            <a
+              href="#about2"
+              class="hover:text-blossom-primary transition-colors"
+              >About</a
+            >
+            <a
+              href="#skills"
+              class="hover:text-blossom-primary transition-colors"
+              >Skills</a
+            >
+            <a
+              href="#experience"
+              class="hover:text-blossom-primary transition-colors"
+              >Experience</a
+            >
+            <a
+              href="#projects"
+              class="hover:text-blossom-primary transition-colors"
+              >Work</a
+            >
+            <a
+              href="#education"
+              class="hover:text-blossom-primary transition-colors"
+              >Education</a
+            >
+            <a
+              href="#certifications"
+              class="hover:text-blossom-primary transition-colors"
+              >Certifications</a
+            >
+            <a
+              href="#contact"
+              class="hover:text-blossom-primary transition-colors"
+              >Contact</a
+            >
+          </div>
 
-            <button onclick="document.documentElement.classList.toggle('dark')" 
-                    class="p-2 rounded-xl bg-blossom-text/5 dark:bg-white/10 hover:bg-blossom-primary/20 transition-all active:scale-90 border border-blossom-primary/10">
-                <span class="hidden dark:inline text-sm">☀️</span>
-                <span class="dark:hidden text-sm">🌙</span>
-            </button>
+          <button
+            onclick="document.documentElement.classList.toggle('dark')"
+            class="p-2 rounded-xl bg-blossom-text/5 dark:bg-white/10 hover:bg-blossom-primary/20 transition-all active:scale-90 border border-blossom-primary/10"
+          >
+            <span class="hidden dark:inline text-sm">☀️</span>
+            <span class="dark:hidden text-sm">🌙</span>
+          </button>
         </div>
-    </div>
-</nav>
-<header class="relative max-w-6xl mx-auto px-4 sm:px-6 pt-24 md:pt-32 pb-16 md:pb-32 grid grid-cols-1 md:grid-cols-2 gap-12 items-center overflow-hidden">
-    <!-- <div class="orb w-64 h-64 bg-blossom-primary/20 top-0 left-0 opacity-50"></div> -->
-    <div class="orb w-48 h-48 bg-purple-400/10 bottom-10 right-10 opacity-50" style="animation-delay: -5s;"></div>
+      </div>
+    </nav>
+    <header
+      class="relative max-w-6xl mx-auto px-4 sm:px-6 pt-24 md:pt-32 pb-16 md:pb-32 grid grid-cols-1 md:grid-cols-2 gap-12 items-center overflow-hidden"
+    >
+      <!-- <div class="orb w-64 h-64 bg-blossom-primary/20 top-0 left-0 opacity-50"></div> -->
+      <div
+        class="orb w-48 h-48 bg-purple-400/10 bottom-10 right-10 opacity-50"
+        style="animation-delay: -5s"
+      ></div>
 
-    <div data-aos="fade-right" class="text-center md:text-left order-2 md:order-1 relative z-20">
-        <span class="text-blossom-primary dark:text-blossom-darkPrimary font-semibold tracking-[0.3em] uppercase text-[10px] md:text-xs mb-4 block reveal-text">
-            <span>Innovation • Scalability • Performance</span>
+      <div
+        data-aos="fade-right"
+        class="text-center md:text-left order-2 md:order-1 relative z-20"
+      >
+        <span
+          class="text-blossom-primary dark:text-blossom-darkPrimary font-semibold tracking-[0.3em] uppercase text-[10px] md:text-xs mb-4 block reveal-text"
+        >
+          <span>Innovation • Scalability • Performance</span>
         </span>
-        <h1 class="serif text-5xl md:text-8xl mt-4 mb-6 leading-tight text-blossom-text dark:text-white reveal-text">
-            <span>Shreya Maurya</span>
+        <h1
+          class="serif text-5xl md:text-8xl mt-4 mb-6 leading-tight text-blossom-text dark:text-white reveal-text"
+        >
+          <span>Shreya Maurya</span>
         </h1>
         <div class="h-16 mb-8">
-            <p id="typewriter-text" class="text-base md:text-lg opacity-80 leading-relaxed max-w-lg mx-auto md:mx-0"></p>
+          <p
+            id="typewriter-text"
+            class="text-base md:text-lg opacity-80 leading-relaxed max-w-lg mx-auto md:mx-0"
+          ></p>
         </div>
-        <div class="flex flex-wrap gap-6 justify-center md:justify-start items-center">
-            <div class="magnetic-area">
-                <a href="mailto:shreyamaurya0660@gmail.com" class="magnetic-btn bg-blossom-primary dark:bg-blossom-darkPrimary dark:text-blossom-darkBase px-10 py-4 rounded-full font-bold shadow-2xl hover:shadow-blossom-primary/40 transition-all text-sm md:text-base text-white">
-                    Hire Me
-                </a>
-            </div>
-            <a href="https://github.com/ShreyaaMaurya" target="_blank" class="border border-blossom-text/20 dark:border-white/10 px-6 md:px-8 py-3 rounded-xl font-bold hover:bg-blossom-text/5 transition text-sm md:text-base">GitHub</a>
+        <div
+          class="flex flex-wrap gap-6 justify-center md:justify-start items-center"
+        >
+          <div class="magnetic-area">
+            <a
+              href="mailto:shreyamaurya0660@gmail.com"
+              class="magnetic-btn bg-blossom-primary dark:bg-blossom-darkPrimary dark:text-blossom-darkBase px-10 py-4 rounded-full font-bold shadow-2xl hover:shadow-blossom-primary/40 transition-all text-sm md:text-base text-white"
+            >
+              Hire Me
+            </a>
+          </div>
+          <a
+            href="https://github.com/ShreyaaMaurya"
+            target="_blank"
+            class="border border-blossom-text/20 dark:border-white/10 px-6 md:px-8 py-3 rounded-xl font-bold hover:bg-blossom-text/5 transition text-sm md:text-base"
+            >GitHub</a
+          >
         </div>
-    </div>
+      </div>
 
-    <div class="flex justify-center order-1 md:order-2 relative z-10" data-aos="zoom-in">
+      <div
+        class="flex justify-center order-1 md:order-2 relative z-10"
+        data-aos="zoom-in"
+      >
         <div class="relative group" data-tilt data-tilt-max="15">
-            <div class="absolute -inset-1 bg-gradient-to-r from-blossom-primary to-blossom-darkPrimary rounded-full blur opacity-25"></div>
-            <img src="./img/Gemini_Generated_Image_kht3ipkht3ipkht3.png" alt="Shreya Avatar" class="relative w-56 h-56 md:w-80 md:h-80 rounded-full object-cover border-4 border-white dark:border-blossom-darkCard shadow-2xl">
-            
-            <div class="absolute -top-4 -left-4 bg-white dark:bg-blossom-darkCard p-3 rounded-xl shadow-xl border border-blossom-primary/20 animate-tech-float-1">
-                <i class="fa-brands fa-python text-yellow-500 text-xl md:text-2xl"></i>
-            </div>
-            
-            <div class="absolute top-0 -right-4 bg-white dark:bg-blossom-darkCard p-3 rounded-xl shadow-xl border border-blossom-primary/20 animate-tech-float-2">
-                <i class="fa-brands fa-react text-cyan-400 text-xl md:text-2xl"></i>
-            </div>
+          <div
+            class="absolute -inset-1 bg-gradient-to-r from-blossom-primary to-blossom-darkPrimary rounded-full blur opacity-25"
+          ></div>
+          <img
+            src="./img/Gemini_Generated_Image_kht3ipkht3ipkht3.png"
+            alt="Shreya Avatar"
+            class="relative w-56 h-56 md:w-80 md:h-80 rounded-full object-cover border-4 border-white dark:border-blossom-darkCard shadow-2xl"
+          />
 
-            <div class="absolute bottom-10 -left-6 bg-white dark:bg-blossom-darkCard p-3 rounded-xl shadow-xl border border-blossom-primary/20 animate-tech-float-3">
-                <i class="fa-solid fa-database text-green-500 text-xl md:text-2xl"></i>
-            </div>
+          <div
+            class="absolute -top-4 -left-4 bg-white dark:bg-blossom-darkCard p-3 rounded-xl shadow-xl border border-blossom-primary/20 animate-tech-float-1"
+          >
+            <i
+              class="fa-brands fa-python text-yellow-500 text-xl md:text-2xl"
+            ></i>
+          </div>
 
-            <div class="absolute -bottom-2 -right-2 bg-white dark:bg-blossom-darkCard p-3 rounded-xl shadow-xl border border-blossom-primary/20 animate-bounce">
-                <i class="fa-solid fa-code text-blossom-primary text-xl md:text-2xl"></i>
-            </div>
+          <div
+            class="absolute top-0 -right-4 bg-white dark:bg-blossom-darkCard p-3 rounded-xl shadow-xl border border-blossom-primary/20 animate-tech-float-2"
+          >
+            <i class="fa-brands fa-react text-cyan-400 text-xl md:text-2xl"></i>
+          </div>
+
+          <div
+            class="absolute bottom-10 -left-6 bg-white dark:bg-blossom-darkCard p-3 rounded-xl shadow-xl border border-blossom-primary/20 animate-tech-float-3"
+          >
+            <i
+              class="fa-solid fa-database text-green-500 text-xl md:text-2xl"
+            ></i>
+          </div>
+
+          <div
+            class="absolute -bottom-2 -right-2 bg-white dark:bg-blossom-darkCard p-3 rounded-xl shadow-xl border border-blossom-primary/20 animate-bounce"
+          >
+            <i
+              class="fa-solid fa-code text-blossom-primary text-xl md:text-2xl"
+            ></i>
+          </div>
         </div>
-    </div>
-</header>
-<section id="about2" class="max-w-6xl mx-auto px-6 py-20 md:py-32 overflow-hidden">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-        
+      </div>
+    </header>
+    <section
+      id="about2"
+      class="max-w-6xl mx-auto px-6 py-20 md:py-32 overflow-hidden"
+    >
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         <div class="relative order-2 lg:order-1" data-aos="fade-right">
-            <div class="glass-card p-1 rounded-[2.5rem] bg-gradient-to-br from-blossom-primary/20 to-transparent">
-                <div class="bg-blossom-darkCard rounded-[2.3rem] p-8 min-h-[400px] relative overflow-hidden">
-                    <div class="absolute inset-0 opacity-10 font-mono text-[10px] pointer-events-none select-none p-4">
-                        const developer = { name: "Shreya", role: "Full Stack", skills: ["MERN", "Django", "SQL"] };
-                        function buildScalableApps() { return "99% Uptime"; }
-                    </div>
+          <div
+            class="glass-card p-1 rounded-[2.5rem] bg-gradient-to-br from-blossom-primary/20 to-transparent"
+          >
+            <div
+              class="bg-blossom-darkCard rounded-[2.3rem] p-8 min-h-[400px] relative overflow-hidden"
+            >
+              <div
+                class="absolute inset-0 opacity-10 font-mono text-[10px] pointer-events-none select-none p-4"
+              >
+                const developer = { name: "Shreya", role: "Full Stack", skills:
+                ["MERN", "Django", "SQL"] }; function buildScalableApps() {
+                return "99% Uptime"; }
+              </div>
 
-                    <div class="relative z-10 flex flex-wrap justify-center gap-8 py-10">
-                        <div class="floating-icon w-20 h-20 bg-white/5 rounded-2xl flex flex-col items-center justify-center border border-white/10 shadow-xl" style="animation-delay: 0s;">
-                            <i class="fa-brands fa-node-js text-3xl text-green-400"></i>
-                            <span class="text-[8px] mt-2 font-bold opacity-50">Node.js</span>
-                        </div>
-                        <div class="floating-icon w-20 h-20 bg-white/5 rounded-2xl flex flex-col items-center justify-center border border-white/10 shadow-xl" style="animation-delay: -1.5s;">
-                            <i class="fa-brands fa-react text-3xl text-cyan-400"></i>
-                            <span class="text-[8px] mt-2 font-bold opacity-50">React</span>
-                        </div>
-                        <div class="floating-icon w-20 h-20 bg-white/5 rounded-2xl flex flex-col items-center justify-center border border-white/10 shadow-xl" style="animation-delay: -0.8s;">
-                            <i class="fa-brands fa-python text-3xl text-yellow-400"></i>
-                            <span class="text-[8px] mt-2 font-bold opacity-50">Python</span>
-                        </div>
-                        <div class="floating-icon w-20 h-20 bg-white/5 rounded-2xl flex flex-col items-center justify-center border border-white/10 shadow-xl" style="animation-delay: -2.2s;">
-                            <i class="fa-solid fa-database text-3xl text-blossom-primary"></i>
-                            <span class="text-[8px] mt-2 font-bold opacity-50">MongoDB</span>
-                        </div>
-                    </div>
-
-                    <div class="mt-4 p-5 rounded-2xl bg-black/40 border border-white/5 font-mono text-xs">
-                        <div class="flex gap-2 mb-3">
-                            <div class="w-2.5 h-2.5 rounded-full bg-red-500/50"></div>
-                            <div class="w-2.5 h-2.5 rounded-full bg-yellow-500/50"></div>
-                            <div class="w-2.5 h-2.5 rounded-full bg-green-500/50"></div>
-                        </div>
-                        <div class="text-blossom-darkText/70">
-                            <span class="text-purple-400">></span> status.current()<br>
-                            <span class="text-green-400">"Interning at Niftel Communications"</span><br>
-                            <span class="text-purple-400">></span> focus.next()<br>
-                            <span class="text-yellow-400">"Scalable Web Architectures"</span>
-                        </div>
-                    </div>
+              <div
+                class="relative z-10 flex flex-wrap justify-center gap-8 py-10"
+              >
+                <div
+                  class="floating-icon w-20 h-20 bg-white/5 rounded-2xl flex flex-col items-center justify-center border border-white/10 shadow-xl"
+                  style="animation-delay: 0s"
+                >
+                  <i class="fa-brands fa-node-js text-3xl text-green-400"></i>
+                  <span class="text-[8px] mt-2 font-bold opacity-50"
+                    >Node.js</span
+                  >
                 </div>
+                <div
+                  class="floating-icon w-20 h-20 bg-white/5 rounded-2xl flex flex-col items-center justify-center border border-white/10 shadow-xl"
+                  style="animation-delay: -1.5s"
+                >
+                  <i class="fa-brands fa-react text-3xl text-cyan-400"></i>
+                  <span class="text-[8px] mt-2 font-bold opacity-50"
+                    >React</span
+                  >
+                </div>
+                <div
+                  class="floating-icon w-20 h-20 bg-white/5 rounded-2xl flex flex-col items-center justify-center border border-white/10 shadow-xl"
+                  style="animation-delay: -0.8s"
+                >
+                  <i class="fa-brands fa-python text-3xl text-yellow-400"></i>
+                  <span class="text-[8px] mt-2 font-bold opacity-50"
+                    >Python</span
+                  >
+                </div>
+                <div
+                  class="floating-icon w-20 h-20 bg-white/5 rounded-2xl flex flex-col items-center justify-center border border-white/10 shadow-xl"
+                  style="animation-delay: -2.2s"
+                >
+                  <i
+                    class="fa-solid fa-database text-3xl text-blossom-primary"
+                  ></i>
+                  <span class="text-[8px] mt-2 font-bold opacity-50"
+                    >MongoDB</span
+                  >
+                </div>
+              </div>
+
+              <div
+                class="mt-4 p-5 rounded-2xl bg-black/40 border border-white/5 font-mono text-xs"
+              >
+                <div class="flex gap-2 mb-3">
+                  <div class="w-2.5 h-2.5 rounded-full bg-red-500/50"></div>
+                  <div class="w-2.5 h-2.5 rounded-full bg-yellow-500/50"></div>
+                  <div class="w-2.5 h-2.5 rounded-full bg-green-500/50"></div>
+                </div>
+                <div class="text-blossom-darkText/70">
+                  <span class="text-purple-400">></span> status.current()<br />
+                  <span class="text-green-400"
+                    >"Interning at Niftel Communications"</span
+                  ><br />
+                  <span class="text-purple-400">></span> focus.next()<br />
+                  <span class="text-yellow-400"
+                    >"Scalable Web Architectures"</span
+                  >
+                </div>
+              </div>
             </div>
+          </div>
         </div>
 
         <div data-aos="fade-left" class="order-1 lg:order-2">
-            <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-blossom-primary/10 border border-blossom-primary/20 text-blossom-primary text-xs font-bold mb-8">
-                <i class="fa-solid fa-terminal"></i> About The Developer
-            </div>
-            
-            <h2 class="serif text-4xl md:text-5xl mb-8 leading-tight text-blossom-text dark:text-white">
-                Turning Complex Logic into <span class="text-blossom-primary italic text-glow">Fluid Experiences</span>
-            </h2>
+          <div
+            class="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-blossom-primary/10 border border-blossom-primary/20 text-blossom-primary text-xs font-bold mb-8"
+          >
+            <i class="fa-solid fa-terminal"></i> About The Developer
+          </div>
 
-            <div class="space-y-6 text-base md:text-lg leading-relaxed opacity-80">
-                <p>
-                    I am a results-driven <span class="text-blossom-primary">MCA student (2026)</span> at SRMCEM. My professional path is driven by a simple goal: building high-performance systems that don't just work, but excel under pressure.
-                </p>
-                <p>
-                    Currently, as a <span class="text-blossom-primary">Full Stack Intern at Niftel Communications</span>, I've helped maintain 99% system uptime through careful debugging and API optimization. My toolkit includes <span class="text-blossom-primary">MERN, Django, and SQL</span>, which I used to boost backend processing speed by 20%.
-                </p>
-            </div>
+          <h2
+            class="serif text-4xl md:text-5xl mb-8 leading-tight text-blossom-text dark:text-white"
+          >
+            Turning Complex Logic into
+            <span class="text-blossom-primary italic text-glow"
+              >Fluid Experiences</span
+            >
+          </h2>
 
-            <!-- <div class="grid grid-cols-2 gap-6 mt-12">
+          <div
+            class="space-y-6 text-base md:text-lg leading-relaxed opacity-80"
+          >
+            <p>
+              I am a results-driven
+              <span class="text-blossom-primary">MCA student (2026)</span> at
+              SRMCEM. My professional path is driven by a simple goal: building
+              high-performance systems that don't just work, but excel under
+              pressure.
+            </p>
+            <p>
+              Currently, as a
+              <span class="text-blossom-primary"
+                >Full Stack Intern at Niftel Communications</span
+              >, I've helped maintain 99% system uptime through careful
+              debugging and API optimization. My toolkit includes
+              <span class="text-blossom-primary">MERN, Django, and SQL</span>,
+              which I used to boost backend processing speed by 20%.
+            </p>
+          </div>
+
+          <!-- <div class="grid grid-cols-2 gap-6 mt-12">
                 <div class="p-6 rounded-3xl bg-white dark:bg-white/5 border border-blossom-primary/10 hover-card">
                     <h4 class="font-bold text-blossom-primary text-2xl mb-1">2+</h4>
                     <p class="text-[10px] uppercase tracking-widest font-bold opacity-60">Full-Stack Internships</p>
@@ -368,528 +646,944 @@ header {
                 </div>
             </div> -->
         </div>
-    </div>
-</section>
+      </div>
+    </section>
 
     <section id="skills" class="max-w-6xl mx-auto px-6 py-12 md:py-24">
-        <h2 class="serif text-4xl md:text-5xl mb-12 text-center md:text-left" data-aos="fade-up">Technical Expertise</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10">
-            <div class="p-8 md:p-10 bg-blossom-card dark:bg-blossom-darkCard rounded-[2rem] border border-blossom-primary/10 shadow-sm hover-card" data-aos="fade-up">
-                <h4 class="text-blossom-primary font-bold uppercase tracking-widest text-[10px] mb-8">Languages</h4>
-                <div class="space-y-6 text-sm md:text-base">
-                    <div><div class="flex justify-between mb-2 font-semibold"><span>Java & C++</span><span>90%</span></div><div class="h-1.5 w-full bg-blossom-base dark:bg-white/5 rounded-full overflow-hidden"><div class="h-full bg-blossom-primary" style="width: 90%"></div></div></div>
-                    <div><div class="flex justify-between mb-2 font-semibold"><span>Python</span><span>95%</span></div><div class="h-1.5 w-full bg-blossom-base dark:bg-white/5 rounded-full overflow-hidden"><div class="h-full bg-blossom-primary" style="width: 95%"></div></div></div>
-                    <div><div class="flex justify-between mb-2 font-semibold"><span>C Programming</span><span>85%</span></div><div class="h-1.5 w-full bg-blossom-base dark:bg-white/5 rounded-full overflow-hidden"><div class="h-full bg-blossom-primary" style="width: 85%"></div></div></div>
-                </div>
+      <h2
+        class="serif text-4xl md:text-5xl mb-12 text-center md:text-left"
+        data-aos="fade-up"
+      >
+        Technical Expertise
+      </h2>
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10"
+      >
+        <div
+          class="p-8 md:p-10 bg-blossom-card dark:bg-blossom-darkCard rounded-[2rem] border border-blossom-primary/10 shadow-sm hover-card"
+          data-aos="fade-up"
+        >
+          <h4
+            class="text-blossom-primary font-bold uppercase tracking-widest text-[10px] mb-8"
+          >
+            Languages
+          </h4>
+          <div class="space-y-6 text-sm md:text-base">
+            <div>
+              <div class="flex justify-between mb-2 font-semibold">
+                <span>Java & C++</span><span>90%</span>
+              </div>
+              <div
+                class="h-1.5 w-full bg-blossom-base dark:bg-white/5 rounded-full overflow-hidden"
+              >
+                <div class="h-full bg-blossom-primary" style="width: 90%"></div>
+              </div>
             </div>
-            <div class="p-8 md:p-10 bg-blossom-card dark:bg-blossom-darkCard rounded-[2rem] border border-blossom-primary/10 shadow-sm hover-card" data-aos="fade-up" data-aos-delay="100">
-                <h4 class="text-blossom-primary font-bold uppercase tracking-widest text-[10px] mb-8">Web Technologies</h4>
-                <div class="space-y-6 text-sm md:text-base">
-                    <div><div class="flex justify-between mb-2 font-semibold"><span>Node.js & Django</span><span>92%</span></div><div class="h-1.5 w-full bg-blossom-base dark:bg-white/5 rounded-full overflow-hidden"><div class="h-full bg-blossom-primary" style="width: 92%"></div></div></div>
-                    <div><div class="flex justify-between mb-2 font-semibold"><span>ReactJs & Express.js</span><span>88%</span></div><div class="h-1.5 w-full bg-blossom-base dark:bg-white/5 rounded-full overflow-hidden"><div class="h-full bg-blossom-primary" style="width: 88%"></div></div></div>
-                    <div><div class="flex justify-between mb-2 font-semibold"><span>HTML5/CSS3/JS</span><span>98%</span></div><div class="h-1.5 w-full bg-blossom-base dark:bg-white/5 rounded-full overflow-hidden"><div class="h-full bg-blossom-primary" style="width: 98%"></div></div></div>
-                </div>
+            <div>
+              <div class="flex justify-between mb-2 font-semibold">
+                <span>Python</span><span>95%</span>
+              </div>
+              <div
+                class="h-1.5 w-full bg-blossom-base dark:bg-white/5 rounded-full overflow-hidden"
+              >
+                <div class="h-full bg-blossom-primary" style="width: 95%"></div>
+              </div>
             </div>
-            <div class="p-8 md:p-10 bg-blossom-card dark:bg-blossom-darkCard rounded-[2rem] border border-blossom-primary/10 shadow-sm hover-card" data-aos="fade-up" data-aos-delay="200">
-                <h4 class="text-blossom-primary font-bold uppercase tracking-widest text-[10px] mb-8">Data & Tools</h4>
-                <div class="space-y-6 text-sm md:text-base">
-                    <div><div class="flex justify-between mb-2 font-semibold"><span>MongoDB & MySQL</span><span>85%</span></div><div class="h-1.5 w-full bg-blossom-base dark:bg-white/5 rounded-full overflow-hidden"><div class="h-full bg-blossom-primary" style="width: 85%"></div></div></div>
-                    <div><div class="flex justify-between mb-2 font-semibold"><span>RESTful APIs & Git</span><span>90%</span></div><div class="h-1.5 w-full bg-blossom-base dark:bg-white/5 rounded-full overflow-hidden"><div class="h-full bg-blossom-primary" style="width: 90%"></div></div></div>
-                    <div><div class="flex justify-between mb-2 font-semibold"><span>Thunder Client</span><span>95%</span></div><div class="h-1.5 w-full bg-blossom-base dark:bg-white/5 rounded-full overflow-hidden"><div class="h-full bg-blossom-primary" style="width: 95%"></div></div></div>
-                </div>
+            <div>
+              <div class="flex justify-between mb-2 font-semibold">
+                <span>C Programming</span><span>85%</span>
+              </div>
+              <div
+                class="h-1.5 w-full bg-blossom-base dark:bg-white/5 rounded-full overflow-hidden"
+              >
+                <div class="h-full bg-blossom-primary" style="width: 85%"></div>
+              </div>
             </div>
+          </div>
         </div>
+        <div
+          class="p-8 md:p-10 bg-blossom-card dark:bg-blossom-darkCard rounded-[2rem] border border-blossom-primary/10 shadow-sm hover-card"
+          data-aos="fade-up"
+          data-aos-delay="100"
+        >
+          <h4
+            class="text-blossom-primary font-bold uppercase tracking-widest text-[10px] mb-8"
+          >
+            Web Technologies
+          </h4>
+          <div class="space-y-6 text-sm md:text-base">
+            <div>
+              <div class="flex justify-between mb-2 font-semibold">
+                <span>Node.js & Django</span><span>92%</span>
+              </div>
+              <div
+                class="h-1.5 w-full bg-blossom-base dark:bg-white/5 rounded-full overflow-hidden"
+              >
+                <div class="h-full bg-blossom-primary" style="width: 92%"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-2 font-semibold">
+                <span>ReactJs & Express.js</span><span>88%</span>
+              </div>
+              <div
+                class="h-1.5 w-full bg-blossom-base dark:bg-white/5 rounded-full overflow-hidden"
+              >
+                <div class="h-full bg-blossom-primary" style="width: 88%"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-2 font-semibold">
+                <span>HTML5/CSS3/JS</span><span>98%</span>
+              </div>
+              <div
+                class="h-1.5 w-full bg-blossom-base dark:bg-white/5 rounded-full overflow-hidden"
+              >
+                <div class="h-full bg-blossom-primary" style="width: 98%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="p-8 md:p-10 bg-blossom-card dark:bg-blossom-darkCard rounded-[2rem] border border-blossom-primary/10 shadow-sm hover-card"
+          data-aos="fade-up"
+          data-aos-delay="200"
+        >
+          <h4
+            class="text-blossom-primary font-bold uppercase tracking-widest text-[10px] mb-8"
+          >
+            Data & Tools
+          </h4>
+          <div class="space-y-6 text-sm md:text-base">
+            <div>
+              <div class="flex justify-between mb-2 font-semibold">
+                <span>MongoDB & MySQL</span><span>85%</span>
+              </div>
+              <div
+                class="h-1.5 w-full bg-blossom-base dark:bg-white/5 rounded-full overflow-hidden"
+              >
+                <div class="h-full bg-blossom-primary" style="width: 85%"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-2 font-semibold">
+                <span>RESTful APIs & Git</span><span>90%</span>
+              </div>
+              <div
+                class="h-1.5 w-full bg-blossom-base dark:bg-white/5 rounded-full overflow-hidden"
+              >
+                <div class="h-full bg-blossom-primary" style="width: 90%"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-2 font-semibold">
+                <span>Thunder Client</span><span>95%</span>
+              </div>
+              <div
+                class="h-1.5 w-full bg-blossom-base dark:bg-white/5 rounded-full overflow-hidden"
+              >
+                <div class="h-full bg-blossom-primary" style="width: 95%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section id="experience" class="max-w-4xl mx-auto px-6 py-12 md:py-20">
-        <h2 class="serif text-4xl mb-12 text-center" data-aos="fade-up">Professional Journey</h2>
-        <div class="relative border-l-2 border-blossom-primary/20 ml-3 space-y-12">
-            <div class="pl-8 relative" data-aos="fade-left">
-                <div class="absolute w-4 h-4 bg-blossom-primary rounded-full -left-[9px] top-1 shadow-lg shadow-blossom-primary/50"></div>
-                <h4 class="text-xl font-bold">Full Stack Developer Intern</h4>
-                <p class="text-blossom-primary font-semibold text-sm mb-4 italic">Niftel Communications | Oct 2025 - Present</p>
-                <ul class="text-sm opacity-70 space-y-3 list-disc ml-4">
-                    <li>Partnered with the development team to debug and maintain scalable web architectures, resolving critical issues to sustain 99% system uptime.</li>
-                    <li>Accelerated backend data processing by ~20% through the integration of third-party RESTful APIs and the enhancement of internal tooling efficiency.</li>
-                    <li>Streamlined feature deployments by actively engaging in Agile code reviews and the SDLC, ensuring adherence to coding standards.</li>
-                </ul>
-            </div>
-            <div class="pl-8 relative" data-aos="fade-left" data-aos-delay="100">
-                <div class="absolute w-4 h-4 border-2 border-blossom-primary bg-blossom-base dark:bg-blossom-darkBase rounded-full -left-[9px] top-1"></div>
-                <h4 class="text-xl font-bold">Trainee Intern</h4>
-                <p class="text-blossom-primary font-semibold text-sm mb-4 italic">SRDT | Python & Django Training.</p>
-                <ul class="text-sm opacity-70 space-y-3 list-disc ml-4">
-                    <li>Completed hands-on intensive training in Python and Django framework.</li>
-                    <li>Learned Django fundamentals including models, views, templates, URL routing, and basic authentication.</li>
-                    <li>Built a mini web application using Django, SQLite, HTML, and CSS.</li>
-                </ul>
-            </div>
+      <h2 class="serif text-4xl mb-12 text-center" data-aos="fade-up">
+        Professional Journey
+      </h2>
+      <div
+        class="relative border-l-2 border-blossom-primary/20 ml-3 space-y-12"
+      >
+        <div class="pl-8 relative" data-aos="fade-left">
+          <div
+            class="absolute w-4 h-4 bg-blossom-primary rounded-full -left-[9px] top-1 shadow-lg shadow-blossom-primary/50"
+          ></div>
+          <h4 class="text-xl font-bold">Full Stack Developer Intern</h4>
+          <p class="text-blossom-primary font-semibold text-sm mb-4 italic">
+            Niftel Communications | Oct 2025 - Present
+          </p>
+          <ul class="text-sm opacity-70 space-y-3 list-disc ml-4">
+            <li>
+              Partnered with the development team to debug and maintain scalable
+              web architectures, resolving critical issues to sustain 99% system
+              uptime.
+            </li>
+            <li>
+              Accelerated backend data processing by ~20% through the
+              integration of third-party RESTful APIs and the enhancement of
+              internal tooling efficiency.
+            </li>
+            <li>
+              Streamlined feature deployments by actively engaging in Agile code
+              reviews and the SDLC, ensuring adherence to coding standards.
+            </li>
+          </ul>
         </div>
+        <div class="pl-8 relative" data-aos="fade-left" data-aos-delay="100">
+          <div
+            class="absolute w-4 h-4 border-2 border-blossom-primary bg-blossom-base dark:bg-blossom-darkBase rounded-full -left-[9px] top-1"
+          ></div>
+          <h4 class="text-xl font-bold">Trainee Intern</h4>
+          <p class="text-blossom-primary font-semibold text-sm mb-4 italic">
+            SRDT | Python & Django Training.
+          </p>
+          <ul class="text-sm opacity-70 space-y-3 list-disc ml-4">
+            <li>
+              Completed hands-on intensive training in Python and Django
+              framework.
+            </li>
+            <li>
+              Learned Django fundamentals including models, views, templates,
+              URL routing, and basic authentication.
+            </li>
+            <li>
+              Built a mini web application using Django, SQLite, HTML, and CSS.
+            </li>
+          </ul>
+        </div>
+      </div>
     </section>
-<section id="projects" class="max-w-6xl mx-auto px-6 py-12 md:py-20">
-    <h2 class="serif text-4xl mb-12" data-aos="fade-up">Portfolio Projects</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">   
-        <div class="group relative bg-white dark:bg-blossom-darkCard rounded-[2rem] overflow-hidden border border-blossom-primary/10 transition-all hover-card cursor-pointer project-hover-card" data-project="eternal">
-            <div class="h-56 overflow-hidden relative">
-                <a href="https://github.com/ShreyaaMaurya/EternalFlames" target="_blank" class="absolute top-4 right-4 z-30 bg-black/60 text-white p-2.5 rounded-full backdrop-blur-md opacity-0 group-hover:opacity-100 transition-all hover:bg-blossom-primary">
-                    <i class="fa-brands fa-github text-xl"></i>
-                </a>
-                <img src="./img/EternalFlames.index.png" class="w-full h-full object-cover transition-opacity duration-300 project-main-img">
-                <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
-                    <span class="bg-white/10 backdrop-blur-md text-white px-4 py-2 rounded-full text-xs font-bold border border-white/20">Click for Details</span>
-                </div>
+    <section id="projects" class="max-w-6xl mx-auto px-6 py-12 md:py-20">
+      <h2 class="serif text-4xl mb-12" data-aos="fade-up">
+        Portfolio Projects
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div
+          class="group relative bg-white dark:bg-blossom-darkCard rounded-[2rem] overflow-hidden border border-blossom-primary/10 transition-all hover-card cursor-pointer project-hover-card"
+          data-project="eternal"
+        >
+          <div class="h-56 overflow-hidden relative">
+            <a
+              href="https://github.com/ShreyaaMaurya/EternalFlames"
+              target="_blank"
+              class="absolute top-4 right-4 z-30 bg-black/60 text-white p-2.5 rounded-full backdrop-blur-md opacity-0 group-hover:opacity-100 transition-all hover:bg-blossom-primary"
+            >
+              <i class="fa-brands fa-github text-xl"></i>
+            </a>
+            <img
+              src="./img/EternalFlames.index.png"
+              class="w-full h-full object-cover transition-opacity duration-300 project-main-img"
+            />
+            <div
+              class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none"
+            >
+              <span
+                class="bg-white/10 backdrop-blur-md text-white px-4 py-2 rounded-full text-xs font-bold border border-white/20"
+                >Click for Details</span
+              >
             </div>
-            <div class="p-8">
-                <h3 class="text-xl font-bold mb-2">EternalFlame</h3>
-                <p class="text-[10px] font-bold text-blossom-primary uppercase tracking-[0.2em] mb-4">E-Commerce • Node.js Express.js MongoDB</p>
-                <div class="text-xs opacity-50 uppercase font-bold tracking-widest">View Case Study →</div>
+          </div>
+          <div class="p-8">
+            <h3 class="text-xl font-bold mb-2">EternalFlame</h3>
+            <p
+              class="text-[10px] font-bold text-blossom-primary uppercase tracking-[0.2em] mb-4"
+            >
+              E-Commerce • Node.js Express.js MongoDB
+            </p>
+            <div class="text-xs opacity-50 uppercase font-bold tracking-widest">
+              View Case Study →
             </div>
+          </div>
         </div>
- <div class="group relative bg-white dark:bg-blossom-darkCard rounded-[2rem] overflow-hidden border border-blossom-primary/10 transition-all hover-card cursor-pointer project-hover-card" data-project="event">
-            <div class="h-56 overflow-hidden relative">
-                <a href="https://github.com/ShreyaaMaurya/event-verse" target="_blank" class="absolute top-4 right-4 z-30 bg-black/60 text-white p-2.5 rounded-full backdrop-blur-md opacity-0 group-hover:opacity-100 transition-all hover:bg-blossom-primary">
-                    <i class="fa-brands fa-github text-xl"></i>
-                </a>
-                <img src="./img/EventVerse.index.png" class="w-full h-full object-cover transition-opacity duration-300 project-main-img">
-                <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
-                    <span class="bg-white/10 backdrop-blur-md text-white px-4 py-2 rounded-full text-xs font-bold border border-white/20">Click for Details</span>
-                </div>
+        <div
+          class="group relative bg-white dark:bg-blossom-darkCard rounded-[2rem] overflow-hidden border border-blossom-primary/10 transition-all hover-card cursor-pointer project-hover-card"
+          data-project="event"
+        >
+          <div class="h-56 overflow-hidden relative">
+            <a
+              href="https://github.com/ShreyaaMaurya/event-verse"
+              target="_blank"
+              class="absolute top-4 right-4 z-30 bg-black/60 text-white p-2.5 rounded-full backdrop-blur-md opacity-0 group-hover:opacity-100 transition-all hover:bg-blossom-primary"
+            >
+              <i class="fa-brands fa-github text-xl"></i>
+            </a>
+            <img
+              src="./img/EventVerse.index.png"
+              class="w-full h-full object-cover transition-opacity duration-300 project-main-img"
+            />
+            <div
+              class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none"
+            >
+              <span
+                class="bg-white/10 backdrop-blur-md text-white px-4 py-2 rounded-full text-xs font-bold border border-white/20"
+                >Click for Details</span
+              >
             </div>
-            <div class="p-8">
-                <h3 class="text-xl font-bold mb-2">EventVerse</h3>
-                <p class="text-[10px] font-bold text-blossom-primary uppercase tracking-[0.2em] mb-4">College Event Management System • Python Django</p>
-                <div class="text-xs opacity-50 uppercase font-bold tracking-widest">View Case Study →</div>
+          </div>
+          <div class="p-8">
+            <h3 class="text-xl font-bold mb-2">EventVerse</h3>
+            <p
+              class="text-[10px] font-bold text-blossom-primary uppercase tracking-[0.2em] mb-4"
+            >
+              College Event Management System • Python Django
+            </p>
+            <div class="text-xs opacity-50 uppercase font-bold tracking-widest">
+              View Case Study →
             </div>
+          </div>
         </div>
 
-         <div class="group relative bg-white dark:bg-blossom-darkCard rounded-[2rem] overflow-hidden border border-blossom-primary/10 transition-all hover-card cursor-pointer project-hover-card" data-project="NiftelInfra">
-            <div class="h-56 overflow-hidden relative">
-                <a href="https://github.com/ShreyaaMaurya/niftel-infra" target="_blank" class="absolute top-4 right-4 z-30 bg-black/60 text-white p-2.5 rounded-full backdrop-blur-md opacity-0 group-hover:opacity-100 transition-all hover:bg-blossom-primary">
-                    <i class="fa-brands fa-github text-xl"></i>
-                </a>
-                <img src="./img/niftelInfra.index.png" class="w-full h-full object-cover transition-opacity duration-300 project-main-img">
-                <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
-                    <span class="bg-white/10 backdrop-blur-md text-white px-4 py-2 rounded-full text-xs font-bold border border-white/20">Click for Details</span>
-                </div>
+        <div
+          class="group relative bg-white dark:bg-blossom-darkCard rounded-[2rem] overflow-hidden border border-blossom-primary/10 transition-all hover-card cursor-pointer project-hover-card"
+          data-project="NiftelInfra"
+        >
+          <div class="h-56 overflow-hidden relative">
+            <a
+              href="https://github.com/ShreyaaMaurya/niftel-infra"
+              target="_blank"
+              class="absolute top-4 right-4 z-30 bg-black/60 text-white p-2.5 rounded-full backdrop-blur-md opacity-0 group-hover:opacity-100 transition-all hover:bg-blossom-primary"
+            >
+              <i class="fa-brands fa-github text-xl"></i>
+            </a>
+            <img
+              src="./img/niftelInfra.index.png"
+              class="w-full h-full object-cover transition-opacity duration-300 project-main-img"
+            />
+            <div
+              class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none"
+            >
+              <span
+                class="bg-white/10 backdrop-blur-md text-white px-4 py-2 rounded-full text-xs font-bold border border-white/20"
+                >Click for Details</span
+              >
             </div>
-            <div class="p-8">
-                <h3 class="text-xl font-bold mb-2">NiftelInfra</h3>
-                <p class="text-[10px] font-bold text-blossom-primary uppercase tracking-[0.2em] mb-4">Property Management System• MERN</p>
-                <div class="text-xs opacity-50 uppercase font-bold tracking-widest">View Case Study →</div>
+          </div>
+          <div class="p-8">
+            <h3 class="text-xl font-bold mb-2">NiftelInfra</h3>
+            <p
+              class="text-[10px] font-bold text-blossom-primary uppercase tracking-[0.2em] mb-4"
+            >
+              Property Management System• MERN
+            </p>
+            <div class="text-xs opacity-50 uppercase font-bold tracking-widest">
+              View Case Study →
             </div>
+          </div>
         </div>
-    
-    </div>
-</section>
-<section id="education" class="max-w-4xl mx-auto px-6 py-12 md:py-24">
-    <h2 class="serif text-4xl md:text-5xl mb-16 text-center" data-aos="fade-up">Academic Journey</h2>
-    
-    <div class="relative border-l-2 border-blossom-primary/20 ml-3 md:ml-6 space-y-12">
-        
+      </div>
+    </section>
+    <section id="education" class="max-w-4xl mx-auto px-6 py-12 md:py-24">
+      <h2
+        class="serif text-4xl md:text-5xl mb-16 text-center"
+        data-aos="fade-up"
+      >
+        Academic Journey
+      </h2>
+
+      <div
+        class="relative border-l-2 border-blossom-primary/20 ml-3 md:ml-6 space-y-12"
+      >
         <div class="pl-8 md:pl-10 relative group" data-aos="fade-left">
-            <div class="absolute -left-[11px] top-1 w-5 h-5 rounded-full bg-blossom-primary shadow-lg shadow-blossom-primary/50 group-hover:scale-125 transition-transform duration-300"></div>
-            <div class="hover-card p-8 bg-white dark:bg-blossom-darkCard rounded-[2rem] border border-blossom-primary/10 shadow-sm">
-                <div class="flex flex-col md:flex-row justify-between mb-4">
-                    <h4 class="text-xl md:text-2xl font-bold text-blossom-primary flex items-center gap-3">
-                        <i class="fa-solid fa-graduation-cap"></i> MCA
-                    </h4>
-                    <span class="text-[10px] font-bold opacity-50 uppercase tracking-widest mt-2 md:mt-0">2024 - 2026 (Expected)</span>
-                </div>
-                <p class="font-bold text-sm mb-2 text-blossom-text dark:text-blossom-darkText">Shri Ramswaroop Memorial College of Engineering & Management</p>
-                <p class="opacity-60 text-sm leading-relaxed">Specializing in Full-Stack Development, focusing on advanced Python, SQL architectures, and building scalable web applications.</p>
+          <div
+            class="absolute -left-[11px] top-1 w-5 h-5 rounded-full bg-blossom-primary shadow-lg shadow-blossom-primary/50 group-hover:scale-125 transition-transform duration-300"
+          ></div>
+          <div
+            class="hover-card p-8 bg-white dark:bg-blossom-darkCard rounded-[2rem] border border-blossom-primary/10 shadow-sm"
+          >
+            <div class="flex flex-col md:flex-row justify-between mb-4">
+              <h4
+                class="text-xl md:text-2xl font-bold text-blossom-primary flex items-center gap-3"
+              >
+                <i class="fa-solid fa-graduation-cap"></i> MCA
+              </h4>
+              <span
+                class="text-[10px] font-bold opacity-50 uppercase tracking-widest mt-2 md:mt-0"
+                >2024 - 2026 (Expected)</span
+              >
             </div>
+            <p
+              class="font-bold text-sm mb-2 text-blossom-text dark:text-blossom-darkText"
+            >
+              Shri Ramswaroop Memorial College of Engineering & Management
+            </p>
+            <p class="opacity-60 text-sm leading-relaxed">
+              Specializing in Full-Stack Development, focusing on advanced
+              Python, SQL architectures, and building scalable web applications.
+            </p>
+          </div>
         </div>
 
-        <div class="pl-8 md:pl-10 relative group" data-aos="fade-left" data-aos-delay="100">
-            <div class="absolute -left-[11px] top-1 w-5 h-5 rounded-full border-2 border-blossom-primary bg-blossom-base dark:bg-blossom-darkBase group-hover:scale-125 transition-transform duration-300"></div>
-            <div class="hover-card p-8 bg-white dark:bg-blossom-darkCard rounded-[2rem] border border-blossom-primary/10 shadow-sm">
-                <div class="flex flex-col md:flex-row justify-between mb-4">
-                    <h4 class="text-xl md:text-2xl font-bold text-blossom-primary flex items-center gap-3">
-                        <i class="fa-solid fa-university"></i> B.Sc Computer Science
-                    </h4>
-                    <span class="text-[10px] font-bold opacity-50 uppercase tracking-widest mt-2 md:mt-0">2021 - 2024</span>
-                </div>
-                <p class="font-bold text-sm mb-2 text-blossom-text dark:text-blossom-darkText">Shri Jai Narain Misra PG College, Lucknow</p>
-                <p class="opacity-60 text-sm leading-relaxed">Gained strong fundamental knowledge in core computer science principles, logic development, and database management systems.</p>
+        <div
+          class="pl-8 md:pl-10 relative group"
+          data-aos="fade-left"
+          data-aos-delay="100"
+        >
+          <div
+            class="absolute -left-[11px] top-1 w-5 h-5 rounded-full border-2 border-blossom-primary bg-blossom-base dark:bg-blossom-darkBase group-hover:scale-125 transition-transform duration-300"
+          ></div>
+          <div
+            class="hover-card p-8 bg-white dark:bg-blossom-darkCard rounded-[2rem] border border-blossom-primary/10 shadow-sm"
+          >
+            <div class="flex flex-col md:flex-row justify-between mb-4">
+              <h4
+                class="text-xl md:text-2xl font-bold text-blossom-primary flex items-center gap-3"
+              >
+                <i class="fa-solid fa-university"></i> B.Sc Computer Science
+              </h4>
+              <span
+                class="text-[10px] font-bold opacity-50 uppercase tracking-widest mt-2 md:mt-0"
+                >2021 - 2024</span
+              >
             </div>
+            <p
+              class="font-bold text-sm mb-2 text-blossom-text dark:text-blossom-darkText"
+            >
+              Shri Jai Narain Misra PG College, Lucknow
+            </p>
+            <p class="opacity-60 text-sm leading-relaxed">
+              Gained strong fundamental knowledge in core computer science
+              principles, logic development, and database management systems.
+            </p>
+          </div>
         </div>
 
-        <div class="pl-8 md:pl-10 relative group" data-aos="fade-left" data-aos-delay="200">
-            <div class="absolute -left-[11px] top-1 w-5 h-5 rounded-full border-2 border-blossom-primary/50 bg-blossom-base dark:bg-blossom-darkBase group-hover:scale-125 transition-transform duration-300"></div>
-            <div class="hover-card p-8 bg-white dark:bg-blossom-darkCard rounded-[2rem] border border-blossom-primary/10 shadow-sm">
-                <div class="flex flex-col md:flex-row justify-between mb-4">
-                    <h4 class="text-lg md:text-xl font-bold text-blossom-primary flex items-center gap-3">
-                        <i class="fa-solid fa-book"></i> Intermediate (Science)
-                    </h4>
-                    <span class="text-[10px] font-bold opacity-50 uppercase tracking-widest mt-2 md:mt-0">Passed 2021</span>
-                </div>
-                <p class="font-bold text-sm text-blossom-text dark:text-blossom-darkText">St. Christ Public Inter College | UP Board</p>
+        <div
+          class="pl-8 md:pl-10 relative group"
+          data-aos="fade-left"
+          data-aos-delay="200"
+        >
+          <div
+            class="absolute -left-[11px] top-1 w-5 h-5 rounded-full border-2 border-blossom-primary/50 bg-blossom-base dark:bg-blossom-darkBase group-hover:scale-125 transition-transform duration-300"
+          ></div>
+          <div
+            class="hover-card p-8 bg-white dark:bg-blossom-darkCard rounded-[2rem] border border-blossom-primary/10 shadow-sm"
+          >
+            <div class="flex flex-col md:flex-row justify-between mb-4">
+              <h4
+                class="text-lg md:text-xl font-bold text-blossom-primary flex items-center gap-3"
+              >
+                <i class="fa-solid fa-book"></i> Intermediate (Science)
+              </h4>
+              <span
+                class="text-[10px] font-bold opacity-50 uppercase tracking-widest mt-2 md:mt-0"
+                >Passed 2021</span
+              >
             </div>
+            <p
+              class="font-bold text-sm text-blossom-text dark:text-blossom-darkText"
+            >
+              St. Christ Public Inter College | UP Board
+            </p>
+          </div>
         </div>
 
-        <div class="pl-8 md:pl-10 relative group" data-aos="fade-left" data-aos-delay="300">
-            <div class="absolute -left-[11px] top-1 w-5 h-5 rounded-full border-2 border-blossom-primary/30 bg-blossom-base dark:bg-blossom-darkBase group-hover:scale-125 transition-transform duration-300"></div>
-            <div class="hover-card p-8 bg-white dark:bg-blossom-darkCard rounded-[2rem] border border-blossom-primary/10 shadow-sm">
-                <div class="flex flex-col md:flex-row justify-between mb-4">
-                    <h4 class="text-lg md:text-xl font-bold text-blossom-primary flex items-center gap-3">
-                        <i class="fa-solid fa-pencil"></i> Highschool
-                    </h4>
-                    <span class="text-[10px] font-bold opacity-50 uppercase tracking-widest mt-2 md:mt-0">Passed 2019</span>
-                </div>
-                <p class="font-bold text-sm text-blossom-text dark:text-blossom-darkText">St. Christ Public Inter College | UP Board</p>
+        <div
+          class="pl-8 md:pl-10 relative group"
+          data-aos="fade-left"
+          data-aos-delay="300"
+        >
+          <div
+            class="absolute -left-[11px] top-1 w-5 h-5 rounded-full border-2 border-blossom-primary/30 bg-blossom-base dark:bg-blossom-darkBase group-hover:scale-125 transition-transform duration-300"
+          ></div>
+          <div
+            class="hover-card p-8 bg-white dark:bg-blossom-darkCard rounded-[2rem] border border-blossom-primary/10 shadow-sm"
+          >
+            <div class="flex flex-col md:flex-row justify-between mb-4">
+              <h4
+                class="text-lg md:text-xl font-bold text-blossom-primary flex items-center gap-3"
+              >
+                <i class="fa-solid fa-pencil"></i> Highschool
+              </h4>
+              <span
+                class="text-[10px] font-bold opacity-50 uppercase tracking-widest mt-2 md:mt-0"
+                >Passed 2019</span
+              >
             </div>
+            <p
+              class="font-bold text-sm text-blossom-text dark:text-blossom-darkText"
+            >
+              St. Christ Public Inter College | UP Board
+            </p>
+          </div>
         </div>
+      </div>
+    </section>
+    <div
+      id="projectModal"
+      class="fixed inset-0 z-[100] hidden bg-blossom-base/98 dark:bg-blossom-darkBase/98 backdrop-blur-2xl overflow-y-auto"
+    >
+      <div class="max-w-5xl mx-auto px-4 md:px-6 py-10">
+        <button
+          onclick="closeProject()"
+          class="fixed top-6 right-6 z-[110] p-4 text-2xl bg-white/10 dark:bg-black/10 rounded-full transition-transform active:scale-90"
+        >
+          ✕
+        </button>
+        <div id="modalContent" class="mt-12 text-left">
+          <h2 id="modalTitle" class="serif text-4xl md:text-6xl mb-6"></h2>
+          <div
+            class="swiper modalSwiper mb-8 h-64 md:h-[450px] rounded-3xl overflow-hidden shadow-2xl"
+          >
+            <div class="swiper-wrapper" id="modalGallery"></div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+            <div class="md:col-span-2">
+              <h4
+                class="font-bold mb-4 uppercase tracking-widest text-[10px] opacity-50"
+              >
+                Description
+              </h4>
+              <p
+                id="modalDesc"
+                class="text-sm md:text-lg leading-relaxed opacity-80"
+              ></p>
+            </div>
+            <div>
+              <h4
+                class="font-bold mb-4 uppercase tracking-widest text-[10px] opacity-50"
+              >
+                Stack used
+              </h4>
+              <div id="techList" class="flex flex-wrap gap-2"></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-</section>
-    <div id="projectModal" class="fixed inset-0 z-[100] hidden bg-blossom-base/98 dark:bg-blossom-darkBase/98 backdrop-blur-2xl overflow-y-auto">
-        <div class="max-w-5xl mx-auto px-4 md:px-6 py-10">
-            <button onclick="closeProject()" class="fixed top-6 right-6 z-[110] p-4 text-2xl bg-white/10 dark:bg-black/10 rounded-full transition-transform active:scale-90">✕</button>
-            <div id="modalContent" class="mt-12 text-left">
-                <h2 id="modalTitle" class="serif text-4xl md:text-6xl mb-6"></h2>
-                <div class="swiper modalSwiper mb-8 h-64 md:h-[450px] rounded-3xl overflow-hidden shadow-2xl">
-                    <div class="swiper-wrapper" id="modalGallery"></div>
-                    <div class="swiper-pagination"></div>
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-button-prev"></div>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-                    <div class="md:col-span-2"><h4 class="font-bold mb-4 uppercase tracking-widest text-[10px] opacity-50">Description</h4><p id="modalDesc" class="text-sm md:text-lg leading-relaxed opacity-80"></p></div>
-                    <div><h4 class="font-bold mb-4 uppercase tracking-widest text-[10px] opacity-50">Stack used</h4><div id="techList" class="flex flex-wrap gap-2"></div></div>
-                </div>
-            </div>
-        </div>
-    </div>
 
-<section id="certifications" class="max-w-6xl mx-auto px-6 py-12 md:py-24">
-    <h2 class="serif text-4xl md:text-5xl mb-16 text-center md:text-left" data-aos="fade-up">
-        Professional <span class="text-blossom-primary italic">Certifications</span>
-    </h2>
-    
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-        <div class="group relative p-[1px] rounded-[2.5rem] bg-gradient-to-br from-blossom-primary/30 to-transparent hover-card shadow-lg" data-aos="zoom-in">
-            <div class="bg-white dark:bg-blossom-darkCard p-8 md:p-10 rounded-[2.4rem] h-full relative overflow-hidden shimmer">
-                <div class="flex justify-between items-start mb-8">
-                    <div class="w-14 h-14 bg-blossom-primary/10 rounded-2xl flex items-center justify-center floating-icon shadow-inner">
-                        <i class="fa-solid fa-robot text-3xl text-blossom-primary"></i>
-                    </div>
-                    <span class="px-3 py-1 bg-blossom-primary/10 text-blossom-primary rounded-full text-[9px] font-bold tracking-widest uppercase border border-blossom-primary/20">Verified</span>
-                </div>
-                
-                <h3 class="font-bold text-2xl mb-3 text-blossom-text dark:text-white group-hover:text-blossom-primary transition-colors">Generative AI Foundations</h3>
-                <p class="text-xs font-mono opacity-50 uppercase tracking-[0.2em] mb-6 flex items-center gap-2">
-                    <span class="w-1.5 h-1.5 rounded-full bg-red-400"></span> UpGrad
-                </p>
-                
-                <p class="text-sm opacity-70 leading-relaxed">
-                    Mastered the core principles of large language models, prompt engineering, and the ethical deployment of AI-driven solutions in modern development workflows.
-                </p>
+    <section id="certifications" class="max-w-6xl mx-auto px-6 py-12 md:py-24">
+      <h2
+        class="serif text-4xl md:text-5xl mb-16 text-center md:text-left"
+        data-aos="fade-up"
+      >
+        Professional
+        <span class="text-blossom-primary italic">Certifications</span>
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+        <div
+          class="group relative p-[1px] rounded-[2.5rem] bg-gradient-to-br from-blossom-primary/30 to-transparent hover-card shadow-lg"
+          data-aos="zoom-in"
+        >
+          <div
+            class="bg-white dark:bg-blossom-darkCard p-8 md:p-10 rounded-[2.4rem] h-full relative overflow-hidden shimmer"
+          >
+            <div class="flex justify-between items-start mb-8">
+              <div
+                class="w-14 h-14 bg-blossom-primary/10 rounded-2xl flex items-center justify-center floating-icon shadow-inner"
+              >
+                <i class="fa-solid fa-robot text-3xl text-blossom-primary"></i>
+              </div>
+              <span
+                class="px-3 py-1 bg-blossom-primary/10 text-blossom-primary rounded-full text-[9px] font-bold tracking-widest uppercase border border-blossom-primary/20"
+                >Verified</span
+              >
             </div>
-        </div>
-        
-        <div class="group relative p-[1px] rounded-[2.5rem] bg-gradient-to-br from-blossom-primary/30 to-transparent hover-card shadow-lg" data-aos="zoom-in" data-aos-delay="100">
-            <div class="bg-white dark:bg-blossom-darkCard p-8 md:p-10 rounded-[2.4rem] h-full relative overflow-hidden shimmer">
-                <div class="flex justify-between items-start mb-8">
-                    <div class="w-14 h-14 bg-blossom-primary/10 rounded-2xl flex items-center justify-center floating-icon shadow-inner" style="animation-delay: -2s;">
-                        <i class="fa-brands fa-java text-3xl text-blossom-primary"></i>
-                    </div>
-                    <span class="px-3 py-1 bg-blossom-primary/10 text-blossom-primary rounded-full text-[9px] font-bold tracking-widest uppercase border border-blossom-primary/20">Verified</span>
-                </div>
-                
-                <h3 class="font-bold text-2xl mb-3 text-blossom-text dark:text-white group-hover:text-blossom-primary transition-colors">Fundamentals of Java</h3>
-                <p class="text-xs font-mono opacity-50 uppercase tracking-[0.2em] mb-6 flex items-center gap-2">
-                    <span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span> Coursera
-                </p>
-                
-                <p class="text-sm opacity-70 leading-relaxed">
-                    Comprehensive study of Object-Oriented Programming (OOP), data structures, and algorithmic logic, forming the backbone of my backend engineering capabilities.
-                </p>
-            </div>
-        </div>
-    </div>
-</section>
-<section id="contact" class="max-w-6xl mx-auto px-6 py-24 md:py-32">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 bg-white dark:bg-blossom-darkCard rounded-[2.5rem] border border-blossom-primary/10 overflow-hidden shadow-2xl" data-aos="fade-up">
-        
-        <div class="lg:col-span-5 p-10 md:p-16 bg-blossom-primary/5 dark:bg-white/5 border-r border-blossom-primary/5">
-            <h2 class="serif text-5xl md:text-6xl text-blossom-text dark:text-white mb-6">Connect.</h2>
-            <p class="text-sm md:text-base opacity-60 leading-relaxed mb-12">
-                I am currently open to Full-Stack Developer roles and internships. If you are looking for a developer who values performance and clean code, let's talk.
+
+            <h3
+              class="font-bold text-2xl mb-3 text-blossom-text dark:text-white group-hover:text-blossom-primary transition-colors"
+            >
+              Generative AI Foundations
+            </h3>
+            <p
+              class="text-xs font-mono opacity-50 uppercase tracking-[0.2em] mb-6 flex items-center gap-2"
+            >
+              <span class="w-1.5 h-1.5 rounded-full bg-red-400"></span> UpGrad
             </p>
 
-            <div class="space-y-8">
-                <div class="flex items-center gap-5 group">
-                    <div class="w-12 h-12 rounded-2xl bg-white dark:bg-white/10 flex items-center justify-center text-blossom-primary border border-blossom-primary/10 group-hover:bg-blossom-primary group-hover:text-white transition-all">
-                        <i class="fa-solid fa-envelope"></i>
-                    </div>
-                    <div>
-                        <span class="text-[10px] font-bold opacity-40 uppercase tracking-widest block">Email Address</span>
-                        <a href="mailto:shreyamaurya0660@gmail.com" class="font-bold hover:text-blossom-primary transition-colors">shreyamaurya0660@gmail.com</a>
-                    </div>
-                </div>
-
-                <div class="flex items-center gap-5 group">
-                    <div class="w-12 h-12 rounded-2xl bg-white dark:bg-white/10 flex items-center justify-center text-blossom-primary border border-blossom-primary/10 group-hover:bg-blossom-primary group-hover:text-white transition-all">
-                        <i class="fa-brands fa-linkedin-in"></i>
-                    </div>
-                    <div>
-                        <span class="text-[10px] font-bold opacity-40 uppercase tracking-widest block">LinkedIn Profile</span>
-                        <a href="https://www.linkedin.com/in/shreya-maurya-bb81b9245/" target="_blank" class="font-bold hover:text-blossom-primary transition-colors">/in/shreya-maurya</a>
-                    </div>
-                </div>
-
-                <div class="flex items-center gap-5 group">
-                    <div class="w-12 h-12 rounded-2xl bg-white dark:bg-white/10 flex items-center justify-center text-blossom-primary border border-blossom-primary/10 group-hover:bg-blossom-primary group-hover:text-white transition-all">
-                        <i class="fa-solid fa-file-arrow-down"></i>
-                    </div>
-                    <div>
-                        <span class="text-[10px] font-bold opacity-40 uppercase tracking-widest block">Resume / CV</span>
-                        <a href="https://drive.google.com/file/d/1uKT-6lmZyzq5Mig8OXhVD40aPB9I69oB/view?usp=drive_link" class="font-bold hover:text-blossom-primary transition-colors underline underline-offset-4">Download PDF</a>
-                    </div>
-                </div>
-            </div>
+            <p class="text-sm opacity-70 leading-relaxed">
+              Mastered the core principles of large language models, prompt
+              engineering, and the ethical deployment of AI-driven solutions in
+              modern development workflows.
+            </p>
+          </div>
         </div>
 
-        <div class="lg:col-span-7 p-10 md:p-16">
-<form id="contact-form" onsubmit="handleFormSubmit(event)" class="space-y-8">
-           <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="space-y-2">
-                        <label class="text-[10px] font-bold uppercase tracking-widest opacity-40 ml-1">Full Name</label>
-                        <input type="text" required placeholder="Enter your name" 
-                            class="w-full bg-blossom-base/50 dark:bg-white/5 border border-blossom-primary/10 rounded-xl p-4 outline-none focus:border-blossom-primary transition-all font-medium text-sm">
-                    </div>
-                    <div class="space-y-2">
-                        <label class="text-[10px] font-bold uppercase tracking-widest opacity-40 ml-1">Email Address</label>
-                        <input type="email" required placeholder="name@company.com" 
-                            class="w-full bg-blossom-base/50 dark:bg-white/5 border border-blossom-primary/10 rounded-xl p-4 outline-none focus:border-blossom-primary transition-all font-medium text-sm">
-                    </div>
-                </div>
-
-                <div class="space-y-2">
-                    <label class="text-[10px] font-bold uppercase tracking-widest opacity-40 ml-1">Message</label>
-                    <textarea required placeholder="Briefly describe your inquiry or project details..." 
-                        class="w-full bg-blossom-base/50 dark:bg-white/5 border border-blossom-primary/10 rounded-xl p-4 outline-none focus:border-blossom-primary transition-all font-medium text-sm h-32 resize-none"></textarea>
-                </div>
-
-                <div class="pt-4">
-                    <button type="submit" class="w-full md:w-max bg-blossom-text dark:bg-white text-white dark:text-blossom-darkBase px-12 py-4 rounded-xl font-bold uppercase tracking-widest text-[10px] hover:bg-blossom-primary hover:text-white transition-all duration-300 shadow-xl shadow-black/5">
-                        Send Message <i class="fa-solid fa-arrow-right-long ml-2"></i>
-                    </button>
-                </div>
-            </form>
-        </div>
-
-    </div>
-</section>
-    <footer class="bg-white dark:bg-blossom-darkBase pt-20 pb-10 border-t border-blossom-primary/10 px-6">
-        <div class="max-w-6xl mx-auto">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-8 mb-12">
-                <div class="text-3xl font-bold serif tracking-tighter">SHREYA.</div>
-                <div class="flex flex-wrap justify-center gap-6 md:gap-8 text-[11px] font-bold uppercase tracking-widest opacity-70">
-                    <a href="#about" class="hover:text-blossom-primary transition-colors">About</a>
-                    <a href="#projects" class="hover:text-blossom-primary transition-colors">Work</a>
-                    <a href="#skills" class="hover:text-blossom-primary transition-colors">Skills</a>
-                    <a href="#education" class="hover:text-blossom-primary transition-colors">Education</a>
-                </div>
-                <div class="flex gap-4">
-                    <a href="https://www.linkedin.com/in/shreya-maurya-bb81b9245/" target="_blank" rel="noopener noreferrer" class="p-2.5 border border-blossom-primary/20 rounded-full hover:bg-blossom-primary hover:text-white transition-all duration-300" title="LinkedIn Profile">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                    </a>
-                    <a href="https://github.com/ShreyaaMaurya" target="_blank" rel="noopener noreferrer" class="p-2.5 border border-blossom-primary/20 rounded-full hover:bg-blossom-primary hover:text-white transition-all duration-300" title="GitHub Profile">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.744.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                    </a>
-                </div>
+        <div
+          class="group relative p-[1px] rounded-[2.5rem] bg-gradient-to-br from-blossom-primary/30 to-transparent hover-card shadow-lg"
+          data-aos="zoom-in"
+          data-aos-delay="100"
+        >
+          <div
+            class="bg-white dark:bg-blossom-darkCard p-8 md:p-10 rounded-[2.4rem] h-full relative overflow-hidden shimmer"
+          >
+            <div class="flex justify-between items-start mb-8">
+              <div
+                class="w-14 h-14 bg-blossom-primary/10 rounded-2xl flex items-center justify-center floating-icon shadow-inner"
+                style="animation-delay: -2s"
+              >
+                <i class="fa-brands fa-java text-3xl text-blossom-primary"></i>
+              </div>
+              <span
+                class="px-3 py-1 bg-blossom-primary/10 text-blossom-primary rounded-full text-[9px] font-bold tracking-widest uppercase border border-blossom-primary/20"
+                >Verified</span
+              >
             </div>
-            <div class="pt-8 border-t border-blossom-primary/5 text-center">
-                <p class="text-[10px] opacity-40 uppercase tracking-[0.2em] font-bold">© 2026 Shreya Maurya • MCA Graduate • Lucknow, UP</p>
-            </div>
+
+            <h3
+              class="font-bold text-2xl mb-3 text-blossom-text dark:text-white group-hover:text-blossom-primary transition-colors"
+            >
+              Fundamentals of Java
+            </h3>
+            <p
+              class="text-xs font-mono opacity-50 uppercase tracking-[0.2em] mb-6 flex items-center gap-2"
+            >
+              <span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>
+              Coursera
+            </p>
+
+            <p class="text-sm opacity-70 leading-relaxed">
+              Comprehensive study of Object-Oriented Programming (OOP), data
+              structures, and algorithmic logic, forming the backbone of my
+              backend engineering capabilities.
+            </p>
+          </div>
         </div>
+      </div>
+    </section>
+    <section id="contact" class="max-w-4xl mx-auto px-6 py-24 md:py-32">
+      <div
+        class="bg-white dark:bg-blossom-darkCard rounded-[2.5rem] border border-blossom-primary/10 overflow-hidden shadow-2xl"
+        data-aos="fade-up"
+      >
+        <div class="p-10 md:p-16 text-center">
+          <h2
+            class="serif text-5xl md:text-6xl text-blossom-text dark:text-white mb-6"
+          >
+            Connect.
+          </h2>
+          <p class="text-sm md:text-lg opacity-60 leading-relaxed max-w-2xl mx-auto mb-12">
+            I am currently open to Full-Stack Developer roles and freelancing opportunities. 
+            If you are looking for a developer who values performance and clean code, let's talk.
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="flex flex-col items-center gap-4 group">
+              <div
+                class="w-14 h-14 rounded-2xl bg-blossom-primary/5 dark:bg-white/5 flex items-center justify-center text-blossom-primary border border-blossom-primary/10 group-hover:bg-blossom-primary group-hover:text-white transition-all duration-300"
+              >
+                <i class="fa-solid fa-envelope text-xl"></i>
+              </div>
+              <div>
+                <span class="text-[10px] font-bold opacity-40 uppercase tracking-widest block mb-1">Email</span>
+                <a
+                  href="mailto:shreyamaurya0660@gmail.com"
+                  class="font-bold hover:text-blossom-primary transition-colors text-sm md:text-base"
+                  >shreyamaurya0660@gmail.com</a
+                >
+              </div>
+            </div>
+
+            <div class="flex flex-col items-center gap-4 group">
+              <div
+                class="w-14 h-14 rounded-2xl bg-blossom-primary/5 dark:bg-white/5 flex items-center justify-center text-blossom-primary border border-blossom-primary/10 group-hover:bg-blossom-primary group-hover:text-white transition-all duration-300"
+              >
+                <i class="fa-brands fa-linkedin-in text-xl"></i>
+              </div>
+              <div>
+                <span class="text-[10px] font-bold opacity-40 uppercase tracking-widest block mb-1">LinkedIn</span>
+                <a
+                  href="https://www.linkedin.com/in/shreya-maurya-bb81b9245/"
+                  target="_blank"
+                  class="font-bold hover:text-blossom-primary transition-colors text-sm md:text-base"
+                  >/in/shreya-maurya</a
+                >
+              </div>
+            </div>
+
+            <div class="flex flex-col items-center gap-4 group">
+              <div
+                class="w-14 h-14 rounded-2xl bg-blossom-primary/5 dark:bg-white/5 flex items-center justify-center text-blossom-primary border border-blossom-primary/10 group-hover:bg-blossom-primary group-hover:text-white transition-all duration-300"
+              >
+                <i class="fa-solid fa-file-arrow-down text-xl"></i>
+              </div>
+              <div>
+                <span class="text-[10px] font-bold opacity-40 uppercase tracking-widest block mb-1">Resume</span>
+                <a
+                  href="https://drive.google.com/file/d/1KdZqU68vFyHgz8FBei7gbv5BExyesHfD/view?usp=sharing"
+                  class="font-bold hover:text-blossom-primary transition-colors underline underline-offset-4 text-sm md:text-base"
+                  >Download PDF</a
+                >
+              </div>
+            </div>
+          </div>
+          
+          <div class="mt-16 pt-8 border-t border-blossom-primary/5">
+            <a 
+              href="mailto:shreyamaurya0660@gmail.com" 
+              class="inline-block bg-blossom-text dark:bg-white text-white dark:text-blossom-darkBase px-10 py-4 rounded-xl font-bold uppercase tracking-widest text-[10px] hover:bg-blossom-primary hover:text-white transition-all shadow-xl"
+            >
+              Start a Conversation
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer
+      class="bg-white dark:bg-blossom-darkBase pt-20 pb-10 border-t border-blossom-primary/10 px-6"
+    >
+      <div class="max-w-6xl mx-auto">
+        <div
+          class="flex flex-col md:flex-row justify-between items-center gap-8 mb-12"
+        >
+          <div class="text-3xl font-bold serif tracking-tighter">SHREYA.</div>
+          <div
+            class="flex flex-wrap justify-center gap-6 md:gap-8 text-[11px] font-bold uppercase tracking-widest opacity-70"
+          >
+            <a
+              href="#about"
+              class="hover:text-blossom-primary transition-colors"
+              >About</a
+            >
+            <a
+              href="#projects"
+              class="hover:text-blossom-primary transition-colors"
+              >Work</a
+            >
+            <a
+              href="#skills"
+              class="hover:text-blossom-primary transition-colors"
+              >Skills</a
+            >
+            <a
+              href="#education"
+              class="hover:text-blossom-primary transition-colors"
+              >Education</a
+            >
+          </div>
+          <div class="flex gap-4">
+            <a
+              href="https://www.linkedin.com/in/shreya-maurya-bb81b9245/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="p-2.5 border border-blossom-primary/20 rounded-full hover:bg-blossom-primary hover:text-white transition-all duration-300"
+              title="LinkedIn Profile"
+            >
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
+                />
+              </svg>
+            </a>
+            <a
+              href="https://github.com/ShreyaaMaurya"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="p-2.5 border border-blossom-primary/20 rounded-full hover:bg-blossom-primary hover:text-white transition-all duration-300"
+              title="GitHub Profile"
+            >
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.744.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="pt-8 border-t border-blossom-primary/5 text-center">
+          <p
+            class="text-[10px] opacity-40 uppercase tracking-[0.2em] font-bold"
+          >
+            © 2026 Shreya Maurya • MCA Graduate • Lucknow, UP
+          </p>
+        </div>
+      </div>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
+      // Pre-loader Logic
+      window.addEventListener("load", function () {
+        const loader = document.getElementById("loader");
 
-        // Pre-loader Logic
-window.addEventListener('load', function() {
-    const loader = document.getElementById('loader');
-    
-    // Smoothly fade out the loader
-    setTimeout(() => {
-        loader.style.opacity = '0';
-        
-        // Remove from DOM after transition to allow interaction with page
+        // Smoothly fade out the loader
         setTimeout(() => {
-            loader.style.display = 'none';
+          loader.style.opacity = "0";
+
+          // Remove from DOM after transition to allow interaction with page
+          setTimeout(() => {
+            loader.style.display = "none";
             // Re-initialize AOS once page is visible to ensure animations trigger correctly
             AOS.refresh();
-        }, 700);
-    }, 1000); // 1-second delay to ensure smooth loading feel
-});
-    
-// Clean Scroll Logic: Only handles the "floating vs pinned" state
-window.addEventListener('scroll', () => {
-    const nav = document.getElementById('main-nav');
-    // If scrolled more than 20px, pin to top, otherwise float
-    if (window.scrollY > 20) {
-        nav.classList.add('top-0', 'w-full', 'max-w-full');
-        nav.classList.remove('top-4', 'w-[95%]', 'max-w-5xl');
-        nav.firstElementChild.classList.add('rounded-none');
-        nav.firstElementChild.classList.remove('rounded-2xl');
-    } else {
-        nav.classList.remove('top-0', 'w-full', 'max-w-full');
-        nav.classList.add('top-4', 'w-[95%]', 'max-w-5xl');
-        nav.firstElementChild.classList.remove('rounded-none');
-        nav.firstElementChild.classList.add('rounded-2xl');
-    }
-});
+          }, 700);
+        }, 1000); // 1-second delay to ensure smooth loading feel
+      });
 
-const projectData = {
-    eternal: { 
-        title: "EternalFlame", 
-        desc: "A high-performance MERN stack e-commerce platform purpose-built for the artisanal candle industry. I architected a seamless shopping experience featuring dynamic product catalogs, a persistent cart system, and a robust order management workflow. The backend leverages custom RESTful APIs to handle complex data transactions, while MongoDB ensures scalable data persistence for thousands of product variants and user profiles. The frontend was meticulously crafted with Tailwind CSS to provide a modern, mobile-first aesthetic with lightning-fast load times.\n\nKey Achievements:\n• Developed full-stack e-commerce capabilities including cart and order management.\n• Implemented secure RESTful APIs for efficient backend-to-frontend communication.\n• Designed a responsive UI ensuring 100% compatibility across all device sizes.", 
-        images: [
-            "./img/EternalFlames.index.png", 
-            "./img/EternalFFlames.admin.png", 
-            "./img/EternalFlames.Product.png", 
-            "./img/EternalFlames.Cart.png"
-        ], 
-        tech: ["Node.js", "Express.js", "MongoDB", "Tailwind CSS", "RESTful APIs"] 
-    },
-    event: { 
-        title: "EventVerse", 
-        desc: "A secure, institutional-grade event management engine designed to streamline college coordination and student engagement. Built using the Python-Django framework, the system strictly adheres to MVC architecture to ensure clean separation of concerns and high maintainability. I implemented advanced authentication protocols to protect user data and developed a relational SQL schema to manage complex schedules, registrations, and venue allocations. This project replaced manual coordination processes with an automated, reliable digital solution.\n\nKey Achievements:\n• Engineered a secure institutional event management system for college-level coordination.\n• Implemented robust user authentication and registration modules following MVC architecture.\n• Followed clean coding practices to ensure long-term maintainability and system scalability.", 
-        images: [
+      // Clean Scroll Logic: Only handles the "floating vs pinned" state
+      window.addEventListener("scroll", () => {
+        const nav = document.getElementById("main-nav");
+        // If scrolled more than 20px, pin to top, otherwise float
+        if (window.scrollY > 20) {
+          nav.classList.add("top-0", "w-full", "max-w-full");
+          nav.classList.remove("top-4", "w-[95%]", "max-w-5xl");
+          nav.firstElementChild.classList.add("rounded-none");
+          nav.firstElementChild.classList.remove("rounded-2xl");
+        } else {
+          nav.classList.remove("top-0", "w-full", "max-w-full");
+          nav.classList.add("top-4", "w-[95%]", "max-w-5xl");
+          nav.firstElementChild.classList.remove("rounded-none");
+          nav.firstElementChild.classList.add("rounded-2xl");
+        }
+      });
+
+      const projectData = {
+        eternal: {
+          title: "EternalFlame",
+          desc: "A high-performance MERN stack e-commerce platform purpose-built for the artisanal candle industry. I architected a seamless shopping experience featuring dynamic product catalogs, a persistent cart system, and a robust order management workflow. The backend leverages custom RESTful APIs to handle complex data transactions, while MongoDB ensures scalable data persistence for thousands of product variants and user profiles. The frontend was meticulously crafted with Tailwind CSS to provide a modern, mobile-first aesthetic with lightning-fast load times.\n\nKey Achievements:\n• Developed full-stack e-commerce capabilities including cart and order management.\n• Implemented secure RESTful APIs for efficient backend-to-frontend communication.\n• Designed a responsive UI ensuring 100% compatibility across all device sizes.",
+          images: [
+            "./img/EternalFlames.index.png",
+            "./img/EternalFFlames.admin.png",
+            "./img/EternalFlames.Product.png",
+            "./img/EternalFlames.Cart.png",
+          ],
+          tech: [
+            "Node.js",
+            "Express.js",
+            "MongoDB",
+            "Tailwind CSS",
+            "RESTful APIs",
+          ],
+        },
+        event: {
+          title: "EventVerse",
+          desc: "A secure, institutional-grade event management engine designed to streamline college coordination and student engagement. Built using the Python-Django framework, the system strictly adheres to MVC architecture to ensure clean separation of concerns and high maintainability. I implemented advanced authentication protocols to protect user data and developed a relational SQL schema to manage complex schedules, registrations, and venue allocations. This project replaced manual coordination processes with an automated, reliable digital solution.\n\nKey Achievements:\n• Engineered a secure institutional event management system for college-level coordination.\n• Implemented robust user authentication and registration modules following MVC architecture.\n• Followed clean coding practices to ensure long-term maintainability and system scalability.",
+          images: [
             "./img/EventVerse.index.png",
-            "./img/EventVerse.about.png", 
-            "./img/Eventverse.gallery.png", 
-            "./img/EventVerse.calendar.png"
-        ], 
-        tech: ["Python", "Django", "SQL", "MVC Architecture", "Auth Modules"] 
-    },
-    NiftelInfra: { 
-        title: "Niftel Infra", 
-        desc: "An operational property management portal developed during my internship to standardize and visualize real-estate assets. I integrated the Google Maps API to provide real-time tracking of properties, which directly improved field operational accuracy by ~25%. The platform features a customized dashboard for administrative control, allowing for secure management of property datasets. I formulated the backend using Node.js to deliver optimized data processing speeds and a responsive experience for internal teams.\n\nKey Achievements:\n• Integrated Google Maps API for real-time asset tracking, enhancing field accuracy by 25%.\n• Accelerated backend data processing by ~20% through API optimization and efficient tooling.\n• Formulated secure RESTful API endpoints to manage complex property datasets.", 
-        images: [
+            "./img/EventVerse.about.png",
+            "./img/Eventverse.gallery.png",
+            "./img/EventVerse.calendar.png",
+          ],
+          tech: ["Python", "Django", "SQL", "MVC Architecture", "Auth Modules"],
+        },
+        NiftelInfra: {
+          title: "Niftel Infra",
+          desc: "An operational property management portal developed during my internship to standardize and visualize real-estate assets. I integrated the Google Maps API to provide real-time tracking of properties, which directly improved field operational accuracy by ~25%. The platform features a customized dashboard for administrative control, allowing for secure management of property datasets. I formulated the backend using Node.js to deliver optimized data processing speeds and a responsive experience for internal teams.\n\nKey Achievements:\n• Integrated Google Maps API for real-time asset tracking, enhancing field accuracy by 25%.\n• Accelerated backend data processing by ~20% through API optimization and efficient tooling.\n• Formulated secure RESTful API endpoints to manage complex property datasets.",
+          images: [
             "./img/niftelInfra.index.png",
             "./img/NiftelInfra.png",
-            "./img/NiftelInfra.propertiesadmin.png", 
-            "./img/NiftelInfra.propertieslocation.png", 
-            "./img/NiftelInfra.map.png"
-        ], 
-        tech: ["Node.js", "Bootstrap", "Google Maps API", "MongoDB/SQL", "Data Visualization"] 
-    }
-};
-const projectCards = document.querySelectorAll('.project-hover-card');
-let modalSwiper;
+            "./img/NiftelInfra.propertiesadmin.png",
+            "./img/NiftelInfra.propertieslocation.png",
+            "./img/NiftelInfra.map.png",
+          ],
+          tech: [
+            "Node.js",
+            "Bootstrap",
+            "Google Maps API",
+            "MongoDB/SQL",
+            "Data Visualization",
+          ],
+        },
+      };
+      const projectCards = document.querySelectorAll(".project-hover-card");
+      let modalSwiper;
 
-projectCards.forEach(card => {
-    const projectKey = card.getAttribute('data-project');
-    const imgElement = card.querySelector('.project-main-img');
-    const data = projectData[projectKey];
-    
-    let cycleInterval;
-    let currentIndex = 0;
+      projectCards.forEach((card) => {
+        const projectKey = card.getAttribute("data-project");
+        const imgElement = card.querySelector(".project-main-img");
+        const data = projectData[projectKey];
 
-    // --- HOVER LOGIC: Cycle Images ---
-    card.addEventListener('mouseenter', () => {
-        if (!data.images || data.images.length <= 1) return;
-        cycleInterval = setInterval(() => {
+        let cycleInterval;
+        let currentIndex = 0;
+
+        // --- HOVER LOGIC: Cycle Images ---
+        card.addEventListener("mouseenter", () => {
+          if (!data.images || data.images.length <= 1) return;
+          cycleInterval = setInterval(() => {
             currentIndex = (currentIndex + 1) % data.images.length;
-            imgElement.style.opacity = '0';
+            imgElement.style.opacity = "0";
             setTimeout(() => {
-                imgElement.src = data.images[currentIndex];
-                imgElement.style.opacity = '1';
+              imgElement.src = data.images[currentIndex];
+              imgElement.style.opacity = "1";
             }, 200);
-        }, 1500);
-    });
+          }, 1500);
+        });
 
-    card.addEventListener('mouseleave', () => {
-        clearInterval(cycleInterval);
-        currentIndex = 0;
-        imgElement.src = data.images[0];
-        imgElement.style.opacity = '1';
-    });
+        card.addEventListener("mouseleave", () => {
+          clearInterval(cycleInterval);
+          currentIndex = 0;
+          imgElement.src = data.images[0];
+          imgElement.style.opacity = "1";
+        });
 
-    // --- CLICK LOGIC: Open Project Details ---
-    card.addEventListener('click', (e) => {
-        // Prevent click if clicking the GitHub icon specifically
-        if (e.target.closest('a')) return;
-        
-        openProjectDetails(projectKey);
-    });
-});
+        // --- CLICK LOGIC: Open Project Details ---
+        card.addEventListener("click", (e) => {
+          // Prevent click if clicking the GitHub icon specifically
+          if (e.target.closest("a")) return;
 
-function openProjectDetails(id) {
-    const p = projectData[id];
-    document.getElementById('modalTitle').innerText = p.title;
-    document.getElementById('modalDesc').innerText = p.desc;
-    
-    // Build Tech Badges
-    const techContainer = document.getElementById('techList');
-    techContainer.innerHTML = '';
-    p.tech.forEach(t => {
-        const span = document.createElement('span');
-        span.className = "px-3 py-1 bg-blossom-primary/20 text-blossom-primary rounded-lg text-[10px] font-bold uppercase tracking-wider";
-        span.innerText = t;
-        techContainer.appendChild(span);
-    });
+          openProjectDetails(projectKey);
+        });
+      });
 
-    // Build Swiper Gallery
-    const gallery = document.getElementById('modalGallery');
-    gallery.innerHTML = '';
-    p.images.forEach(img => {
-        gallery.innerHTML += `<div class="swiper-slide"><img src="${img}" class="rounded-2xl shadow-lg"></div>`;
-    });
+      function openProjectDetails(id) {
+        const p = projectData[id];
+        document.getElementById("modalTitle").innerText = p.title;
+        document.getElementById("modalDesc").innerText = p.desc;
 
-    document.getElementById('projectModal').classList.remove('hidden');
-    document.body.style.overflow = 'hidden';
+        // Build Tech Badges
+        const techContainer = document.getElementById("techList");
+        techContainer.innerHTML = "";
+        p.tech.forEach((t) => {
+          const span = document.createElement("span");
+          span.className =
+            "px-3 py-1 bg-blossom-primary/20 text-blossom-primary rounded-lg text-[10px] font-bold uppercase tracking-wider";
+          span.innerText = t;
+          techContainer.appendChild(span);
+        });
 
-    if (modalSwiper) modalSwiper.destroy();
-    modalSwiper = new Swiper(".modalSwiper", { 
-        pagination: { el: ".swiper-pagination", clickable: true }, 
-        navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" }, 
-        loop: p.images.length > 1 
-    });
-}
+        // Build Swiper Gallery
+        const gallery = document.getElementById("modalGallery");
+        gallery.innerHTML = "";
+        p.images.forEach((img) => {
+          gallery.innerHTML += `<div class="swiper-slide"><img src="${img}" class="rounded-2xl shadow-lg"></div>`;
+        });
 
-function closeProject() {
-    document.getElementById('projectModal').classList.add('hidden');
-    document.body.style.overflow = 'auto';
-}
-        // --- Magnetic Button Logic ---
-const magneticAreas = document.querySelectorAll('.magnetic-area');
+        document.getElementById("projectModal").classList.remove("hidden");
+        document.body.style.overflow = "hidden";
 
-magneticAreas.forEach(area => {
-    area.addEventListener('mousemove', function(e) {
-        const btn = this.querySelector('.magnetic-btn');
-        const rect = this.getBoundingClientRect();
-        const x = e.clientX - rect.left - rect.width / 2;
-        const y = e.clientY - rect.top - rect.height / 2;
-        
-        btn.style.transform = `translate(${x * 0.3}px, ${y * 0.5}px)`;
-    });
+        if (modalSwiper) modalSwiper.destroy();
+        modalSwiper = new Swiper(".modalSwiper", {
+          pagination: { el: ".swiper-pagination", clickable: true },
+          navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          },
+          loop: p.images.length > 1,
+        });
+      }
 
-    area.addEventListener('mouseleave', function() {
-        const btn = this.querySelector('.magnetic-btn');
-        btn.style.transform = `translate(0px, 0px)`;
-    });
-});
+      function closeProject() {
+        document.getElementById("projectModal").classList.add("hidden");
+        document.body.style.overflow = "auto";
+      }
+      // --- Magnetic Button Logic ---
+      const magneticAreas = document.querySelectorAll(".magnetic-area");
 
-// --- Typewriter Initialization ---
-new Typewriter('#typewriter-text', {
-    strings: [
-        'Crafting Scalable MERN Applications.',
-        'Architecting Python & Django Solutions.',
-        'Building 99% Uptime Architectures.',
-        'MCA Candidate @ SRMCEM.'
-    ],
-    autoStart: true,
-    loop: true,
-    cursor: '_',
-    delay: 50
-});
+      magneticAreas.forEach((area) => {
+        area.addEventListener("mousemove", function (e) {
+          const btn = this.querySelector(".magnetic-btn");
+          const rect = this.getBoundingClientRect();
+          const x = e.clientX - rect.left - rect.width / 2;
+          const y = e.clientY - rect.top - rect.height / 2;
 
+          btn.style.transform = `translate(${x * 0.3}px, ${y * 0.5}px)`;
+        });
 
+        area.addEventListener("mouseleave", function () {
+          const btn = this.querySelector(".magnetic-btn");
+          btn.style.transform = `translate(0px, 0px)`;
+        });
+      });
+
+      // --- Typewriter Initialization ---
+      new Typewriter("#typewriter-text", {
+        strings: [
+          "Crafting Scalable MERN Applications.",
+          "Architecting Python & Django Solutions.",
+          "Building 99% Uptime Architectures.",
+          "MCA Candidate @ SRMCEM.",
+        ],
+        autoStart: true,
+        loop: true,
+        cursor: "_",
+        delay: 50,
+      });
     </script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
@@ -897,68 +1591,78 @@ new Typewriter('#typewriter-text', {
     <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
 
     <script>
-        // Loader logic
-        window.addEventListener('load', function() {
-            const loader = document.getElementById('loader');
-            setTimeout(() => {
-                loader.style.opacity = '0';
-                setTimeout(() => { loader.style.display = 'none'; AOS.refresh(); }, 700);
-            }, 1000);
-            
-            // Typewriter logic
-            new Typewriter('#typewriter-text', {
-                strings: ['Full Stack Developer.', 'Django Developer.', 'Problem Solver.','GenAI Enthusiast' , 'Building scalable solutions.'],
-                autoStart: true, loop: true, delay: 50
-            });
+      // Loader logic
+      window.addEventListener("load", function () {
+        const loader = document.getElementById("loader");
+        setTimeout(() => {
+          loader.style.opacity = "0";
+          setTimeout(() => {
+            loader.style.display = "none";
+            AOS.refresh();
+          }, 700);
+        }, 1000);
+
+        // Typewriter logic
+        new Typewriter("#typewriter-text", {
+          strings: [
+            "Full Stack Developer.",
+            "Django Developer.",
+            "Problem Solver.",
+            "GenAI Enthusiast",
+            "Building scalable solutions.",
+          ],
+          autoStart: true,
+          loop: true,
+          delay: 50,
         });
+      });
 
-        // Magnetic Logic
-        document.querySelectorAll('.magnetic-area').forEach(area => {
-            area.addEventListener('mousemove', (e) => {
-                const btn = area.querySelector('.magnetic-btn');
-                const rect = area.getBoundingClientRect();
-                const x = (e.clientX - rect.left - rect.width / 2) * 0.3;
-                const y = (e.clientY - rect.top - rect.height / 2) * 0.3;
-                btn.style.transform = `translate(${x}px, ${y}px)`;
-            });
-            area.addEventListener('mouseleave', (e) => {
-                area.querySelector('.magnetic-btn').style.transform = `translate(0, 0)`;
-            });
+      document.querySelectorAll(".magnetic-area").forEach((area) => {
+        area.addEventListener("mousemove", (e) => {
+          const btn = area.querySelector(".magnetic-btn");
+          const rect = area.getBoundingClientRect();
+          const x = (e.clientX - rect.left - rect.width / 2) * 0.3;
+          const y = (e.clientY - rect.top - rect.height / 2) * 0.3;
+          btn.style.transform = `translate(${x}px, ${y}px)`;
         });
-   AOS.init({ duration: 1000, once: true });
-      
-        // form logic here
-
-        const handleFormSubmit = async (e) => {
-    e.preventDefault();
-    const btn = e.target.querySelector('button');
-    btn.disabled = true;
-    btn.innerText = "Syncing...";
-
-    const formData = {
-        name: document.getElementById('name').value,
-        email: document.getElementById('email').value,
-        message: document.getElementById('message').value
-    };
-
-    try {
-        const response = await fetch('/api/contact', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(formData)
+        area.addEventListener("mouseleave", (e) => {
+          area.querySelector(".magnetic-btn").style.transform =
+            `translate(0, 0)`;
         });
+      });
+      AOS.init({ duration: 1000, once: true });
 
-        if (response.ok) {
+
+      const handleFormSubmit = async (e) => {
+        e.preventDefault();
+        const btn = e.target.querySelector("button");
+        btn.disabled = true;
+        btn.innerText = "Syncing...";
+
+        const formData = {
+          name: document.getElementById("name").value,
+          email: document.getElementById("email").value,
+          message: document.getElementById("message").value,
+        };
+
+        try {
+          const response = await fetch("/api/contact", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(formData),
+          });
+
+          if (response.ok) {
             alert("Sync Successful! I'll get back to you soon.");
-            e.target.reset(); // Clear the form
+            e.target.reset();
+          }
+        } catch (err) {
+          alert("Sync Failed. Please try again later.");
+        } finally {
+          btn.disabled = false;
+          btn.innerText = "Send Message";
         }
-    } catch (err) {
-        alert("Sync Failed. Please try again later.");
-    } finally {
-        btn.disabled = false;
-        btn.innerText = "Send Message";
-    }
-};
+      };
     </script>
-</body>
+  </body>
 </html>
